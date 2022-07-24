@@ -48,19 +48,19 @@
                 {{!-- disable mouseDown so it doesn't trigger focus-out validations --}}
                 {{action (optional this.noop) on="mouseDown"}}
             >
-                <span>Cancel</span>
+                <span>{{t "Manual.Settings.Cancel"}}</span>
             </button>
         {{else}}
             <button
                 class="gh-btn gh-btn-red gh-btn-icon" data-test-button="delete-label" type="button" {{on "click" (action "toggleDeleteLabelModal")}}
                 {{on "mousedown" (optional this.noop)}}
             >
-                <span>{{svg-jar "trash"}} Delete</span>
+                <span>{{svg-jar "trash"}} {{t "Manual.Settings.Delete"}}</span>
             </button>
         {{/if}}
 
         <GhTaskButton
-            @buttonText="Save"
+            @buttonText="{{t "Manual.Settings.Cancel"}}"
             @runningText="Saving..."
             @successText="Saved"
             @task={{this.saveTask}}

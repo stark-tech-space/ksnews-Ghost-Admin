@@ -38,13 +38,16 @@ export default Route.extend(ShortcutsRoute, {
     whatsNew: service(),
     billing: service(),
 
+    intl: service(),
+
     shortcuts,
 
     routeAfterAuthentication: 'home',
 
     init() {
         this._super(...arguments);
-
+        const locale = this.settings.get('locale') || 'zh';
+        this.intl.setLocale(['zh']);
         this.router.on('routeDidChange', () => {
             this.notifications.displayDelayed();
         });

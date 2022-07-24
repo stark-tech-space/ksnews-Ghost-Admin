@@ -1,9 +1,9 @@
 <section class="gh-canvas">
     <GhCanvasHeader class="gh-canvas-header">
         <h2 class="gh-canvas-title" data-test-screen-title>
-            <LinkTo @route="settings">Settings</LinkTo>
+            <LinkTo @route="settings">{{t "Manual.Settings.Settings"}}</LinkTo>
             <span>{{svg-jar "arrow-right"}}</span>
-            General
+            {{t "Manual.Settings.General"}}
         </h2>
         <section class="view-actions">
             <GhTaskButton @buttonText="Save" @task={{this.saveTask}} @class="gh-btn gh-btn-primary gh-btn-icon" data-test-button="save" />
@@ -19,12 +19,12 @@
 
 
     <div class="gh-main-section">
-        <h4 class="gh-main-section-header small bn">Publication info</h4>
+        <h4 class="gh-main-section-header small bn">{{t "Manual.Settings.Publication_info"}}</h4>
         <section class="gh-expandable">
             <div class="gh-expandable-block">
                 <div class="gh-expandable-header">
                     <div>
-                        <h4 class="gh-expandable-title">Title &amp; description</h4>
+                        <h4 class="gh-expandable-title">{{t "Manual.Settings.Title_&_description"}}</h4>
                         <p class="gh-expandable-description">The details used to identify your publication around the web</p>
                     </div>
                     <button type="button" class="gh-btn" {{action (toggle "pubInfoOpen" this)}} data-test-toggle-pub-info><span>{{if this.pubInfoOpen "Close" "Expand"}}</span></button>
@@ -61,10 +61,10 @@
             <div class="gh-expandable-block">
                 <div class="gh-expandable-header">
                     <div>
-                        <h4 class="gh-expandable-title">Site timezone</h4>
+                        <h4 class="gh-expandable-title">{{t "Manual.Settings.Site_timezone"}}</h4>
                         <p class="gh-expandable-description">Set the time and date of your publication, used for all published posts</p>
                     </div>
-                    <button type="button" class="gh-btn" {{action (toggle "timezoneOpen" this)}} data-test-toggle-timezone><span>{{if this.timezoneOpen "Close" "Expand"}}</span></button>
+                    <button type="button" class="gh-btn" {{action (toggle "timezoneOpen" this)}} data-test-toggle-timezone><span>{{if this.timezoneOpen (t "Manual.Settings.Close") (t "Manual.Settings.Expand")}}</span></button>
                 </div>
                 <div class="gh-expandable-content">
                     {{#liquid-if this.timezoneOpen}}
@@ -81,7 +81,7 @@
             <div class="gh-expandable-block">
                 <div class="gh-expandable-header">
                     <div>
-                        <h4 class="gh-expandable-title">Publication Language</h4>
+                        <h4 class="gh-expandable-title">{{t "Manual.Settings.Publication_Language"}}</h4>
                         <p class="gh-expandable-description">Set the language/locale which is used on your site</p>
                     </div>
                     <button type="button" class="gh-btn" {{action (toggle "langOpen" this)}} data-test-toggle-lang><span>{{if this.langOpen "Close" "Expand"}}</span></button>

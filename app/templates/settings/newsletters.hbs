@@ -1,13 +1,13 @@
 <section class="gh-canvas gh-setting-email">
     <GhCanvasHeader class="gh-canvas-header">
         <h2 class="gh-canvas-title" data-test-screen-title>
-            <LinkTo @route="settings">Settings</LinkTo>
+            <LinkTo @route="settings">{{t "Manual.Settings.Settings"}}</LinkTo>
             <span>{{svg-jar "arrow-right"}}</span>
-            Email newsletter
+            {{t "Manual.Posts.Email_newsletter"}}
         </h2>
         <section class="view-actions">
             <GhTaskButton
-                @buttonText="Save"
+                @buttonText="{{t "Manual.Settings.Save"}}"
                 @task={{this.saveSettings}}
                 @successText="Saved"
                 @runningText="Saving"

@@ -32,9 +32,9 @@
             {{/if}}
         </time>
     {{else if @post.isNew}}
-        New
+        {{t "Manual.Posts.New"}}
     {{else}}
-        Draft
+        {{t "Manual.Posts.Draft"}}
         {{unless @hasDirtyAttributes "- Saved"}}
     {{/if}}
 </div>
