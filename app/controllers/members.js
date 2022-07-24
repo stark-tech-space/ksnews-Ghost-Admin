@@ -37,6 +37,7 @@ export default class MembersController extends Controller {
     @service store;
     @service utils;
     @service settings;
+    @service intl;
 
     queryParams = [
         'label',
@@ -110,10 +111,10 @@ export default class MembersController extends Controller {
 
         if (this.feature.get('emailAnalytics')) {
             return [{
-                name: 'Newest',
+                name: this.intl.t('Manual.JS.Newest'),
                 value: null
             }, {
-                name: 'Open rate',
+                name: this.intl.t('Manual.JS.Open_rate'),
                 value: 'email_open_rate'
             }];
         }

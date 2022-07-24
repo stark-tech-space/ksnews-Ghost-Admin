@@ -7,7 +7,7 @@
         </h2>
         <section class="view-actions">
             <GhTaskButton
-                @buttonText="Save"
+                @buttonText="{{t "Manual.Settings.Save"}}"
                 @task={{this.saveSettingsTask}}
                 @successText="Saved"
                 @runningText="Saving"
@@ -23,7 +23,7 @@
         <div class="gh-main-layout gh-setting-membership content-preview">
             <div class="gh-setting-members-basicsform">
                 <p class="intro">Fund your work with subscription revenue. Connect your Stripe account and offer premium content to your audience. Our creators are already making over $12 million per year, while <strong>Ghost takes 0% payment fees</strong>.</p>
-                
+
                 {{#if (not (feature 'comments'))}}
                     <hr>
                 {{/if}}

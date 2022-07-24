@@ -23,12 +23,12 @@
                 class="gh-btn gh-btn-editor gh-editor-preview-trigger active"
                 {{on "click" @close}}
             >
-                <span>Preview</span>
+                <span>{{t "Manual.Posts.Preview"}}</span>
             </button>
 
             {{#if @data.publishOptions.user.isContributor}}
                 <GhTaskButton
-                    @buttonText="Save"
+                    @buttonText="{{t "Manual.Settings.Save"}}"
                     @task={{@data.saveTask}}
                     @runningText="Saving"
                     @class="gh-btn gh-btn-icon gh-btn-editor gh-editor-save-trigger contributor-save-button"
@@ -39,7 +39,7 @@
                     class="gh-btn gh-btn-editor darkgrey gh-publish-trigger"
                     {{on "click" @data.togglePreviewPublish}}
                 >
-                    <span>Publish</span>
+                    <span>{{t "Manual.Posts.Publish"}}</span>
                 </button>
             {{/if}}
 

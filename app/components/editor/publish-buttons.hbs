@@ -7,12 +7,12 @@
             {{on-key "cmd+p" @publishManagement.togglePreview}}
             data-test-button="contributor-preview"
         >
-            <span>Preview</span>
+            <span>{{t "Manual.Posts.Preview"}}</span>
         </button>
     {{/if}}
 
     <GhTaskButton
-        @buttonText="Save"
+        @buttonText="{{t "Manual.Settings.Save"}}"
         @task={{@publishManagement.saveTask}}
         @runningText="Saving"
         @class="gh-btn gh-btn-icon gh-btn-editor gh-editor-save-trigger contributor-save-button"
@@ -26,7 +26,7 @@
             {{on-key "cmd+p" @publishManagement.togglePreview}}
             data-test-button="publish-preview"
         >
-            <span>Preview</span>
+            <span>{{t "Manual.Posts.Preview"}}</span>
         </button>
 
         <button
@@ -37,7 +37,7 @@
             disabled={{@publishManagement.publishOptions.isLoading}}
             data-test-button="publish-flow"
         >
-            <span>Publish</span>
+            <span>{{t "Manual.Posts.Publish"}}</span>
         </button>
     {{else}}
         <GhTaskButton

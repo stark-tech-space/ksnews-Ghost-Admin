@@ -20,7 +20,7 @@
                         </a>
                         {{else if this.post.isScheduled}}
                         <a class="post-view-link" target="_blank" href="{{this.post.previewUrl}}" rel="noopener noreferrer">
-                            Preview {{svg-jar "external"}}
+                            {{t "Manual.Posts.Preview"}} {{svg-jar "external"}}
                         </a>
                         {{/if}}
                     {{/unless}}
@@ -141,7 +141,7 @@
                     {{#if (and this.post.isPost this.showEmailNewsletter (not-eq this.settings.membersSignupAccess "none") (not-eq this.settings.editorDefaultEmailRecipients "disabled"))}}
                         <li class="nav-list-item">
                             <button type="button" {{action "showSubview" "email-settings"}} data-test-button="email-settings">
-                                <b>Email newsletter</b>
+                                <b>{{t "Manual.Posts.Email_newsletter"}}</b>
                                 <span>Customize email settings</span>
                             </button>
                             {{svg-jar "arrow-right"}}

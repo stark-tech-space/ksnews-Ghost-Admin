@@ -1,6 +1,6 @@
 <div class="settings-menu-header subview">
     <button class="back settings-menu-header-action" data-test-button="close-psm-subview" type="button" {{on "click" this.close}}>{{svg-jar "arrow-left"}}<span class="hidden">Back</span></button>
-    <h4>Email newsletter</h4>
+    <h4>{{t "Manual.Posts.Email_newsletter"}}</h4>
     <div style="width:23px;"></div>
 </div>
 
@@ -89,7 +89,7 @@
         {{#if this.mailgunError}}
             <p class="gh-box gh-box-alert settings-menu-mailgun-alert">
                 {{svg-jar "info" class="w5 h5 fill-yellow nl1"}}
-                You need to configure Mailgun in <LinkTo @route="settings.newsletters" data-test-nav="labs">Settings &rarr; Email newsletter</LinkTo> to enable email newsletters.
+                You need to configure Mailgun in <LinkTo @route="settings.newsletters" data-test-nav="labs">{{t "Manual.Settings.Settings"}} &rarr; Email newsletter</LinkTo> to enable email newsletters.
             </p>
         {{/if}}
 

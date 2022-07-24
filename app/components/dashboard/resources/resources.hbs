@@ -1,7 +1,7 @@
 <section class="gh-dashboard-resource gh-dashboard-resources" {{did-insert this.load}}>
     <article class="gh-dashboard-resource-box">
         {{#if (not (or this.loading this.error))}}
-            <a href="{{this.resource.url}}" target="_blank" class="gh-dashboard-resource-thumbnail" rel="noopener noreferrer" style={{html-safe (concat "background-image: url(" this.resource.feature_image ")")}} aria-label="Resource link"></a>        
+            <a href="{{this.resource.url}}" target="_blank" class="gh-dashboard-resource-thumbnail" rel="noopener noreferrer" style={{html-safe (concat "background-image: url(" this.resource.feature_image ")")}} aria-label="Resource link"></a>
             <div class="gh-dashboard-resource-contents">
                 <div class="gh-dashboard-resource-title">
                     <h4>Resources</h4>
@@ -15,7 +15,7 @@
                     </a>
                 </div>
                 <div class="gh-dashboard-resource-footer">
-                    <a href="https://ghost.org/resources/" target="_blank" rel="noopener noreferrer">Learn more &rarr;</a>
+                    <a href="https://ghost.org/resources/" target="_blank" rel="noopener noreferrer">{{t "Manual.Tags.Learn_more"}} &rarr;</a>
                 </div>
             </div>
         {{/if}}

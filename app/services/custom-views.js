@@ -107,6 +107,7 @@ export default class CustomViewsService extends Service {
     @service router;
     @service session;
     @service settings;
+    @service intl;
 
     @tracked viewList = [];
 
@@ -135,7 +136,10 @@ export default class CustomViewsService extends Service {
         // sense to show them default views which change the status/type filter
         let user = await session.user;
         if (!user.isContributor) {
-            viewList.push(...DEFAULT_VIEWS);
+            viewList.push(...DEFAULT_VIEWS.map(item => ({
+                ...item,
+                name: this.intl.t(`Manual.JS.${item.name}`)
+            })));
         }
 
         viewList.push(...views.map((view) => {

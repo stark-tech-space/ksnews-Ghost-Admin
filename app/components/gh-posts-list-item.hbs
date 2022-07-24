@@ -92,7 +92,7 @@
 
                     {{#if @post.isDraft}}
                     <span class="gh-content-status-draft gh-badge gh-badge-pink nowrap">
-                        Draft
+                        {{t "Manual.Posts.Draft"}}
                     </span>
                     {{/if}}
 
@@ -117,7 +117,7 @@
                 <div class="flex items-center">
                     {{#if @post.isScheduled}}
                     <span class="gh-content-status-scheduled gh-badge nowrap" title="Scheduled" data-tooltip="{{capitalize this.scheduledText}} to {{@post.emailSegment}} members">
-                        Scheduled
+                        {{t "Manual.Posts.Scheduled"}}
                         {{#if @post.newsletter}}
                         {{svg-jar "email-stroke"}}
                         {{/if}}
@@ -126,13 +126,13 @@
 
                     {{#if @post.isDraft}}
                     <span class="gh-content-status-draft gh-badge gh-badge-pink nowrap">
-                        Draft
+                        {{t "Manual.Posts.Draft"}}
                     </span>
                     {{/if}}
 
                     {{#if @post.isPublished}}
                     <span class="gh-content-status-published nowrap">
-                        Published
+                        {{t "Manual.Others.Published"}}
                         {{#if @post.hasEmail}}
                         {{svg-jar "email-stroke"}}
                         {{/if}}
