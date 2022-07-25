@@ -1832,7 +1832,14 @@
       "Begin_writing_your": "Begin writing your ",
       "title_from": "Title from ",
       "Copy_link": "Copy Link",
-      "Link_copied": "Link copied"
+      "Link_copied": "Link copied",
+      "Site_design": "Site Design",
+      "Brand": "Brand",
+      "Site-wide": "Site-wide",
+      "Homepage": "Homepage",
+      "Post": "Post",
+      "Change_theme": "Change Theme",
+      "Current": "Current"
     },
     "Designsandbox": {
       "Components": "Components",
@@ -1906,6 +1913,7 @@
       "Reorder": "Reorder",
       "Add": "Add",
       "Upgrade": "Upgrade",
+      "Site_description": "Site Description",
       "Accent_color": "Accent color",
       "Primary_color_used_in_your_publication_theme": "Primary color used in your publication theme",
       "Publication_icon": "Publication icon",
@@ -2190,7 +2198,10 @@
       "Unpaid": "Unpaid",
       "Past_Due": "Past Due",
       "Incomplete": "Incomplete",
-      "Incomplete_Expired": "Incomplete - Expired"
+      "Incomplete_Expired": "Incomplete - Expired",
+      "Homepage": "Homepage",
+      "Post": "Post",
+      "Site-wide": "Site-wide"
     }
   }
 }

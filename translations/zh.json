@@ -9,7 +9,7 @@
     },
     "api": {
       "authentication": {
-        "sampleBlogDescription": "Thoughts, stories and ideas.",
+        "sampleBlogDescription": "想法，故事及理念",
         "mail": {
           "resetPassword": "Reset Password",
           "resetPasswordRequired": "Reset Password",
@@ -885,8 +885,8 @@
       "Are_you_sure_you_want_to_delete_this_page?": "你確定要刪除這個頁面嗎？",
       "You're_about_to_delete": "你即將刪除",
       "._This_is_permanent!_We_warned_you,_k?": ". 刪除是永久的，這是最後警告",
-      "Are_you_sure_you_want_to_leave_this_page?": "你確定你要離開個頁面嗎？",
-      "Hey_there!_It_looks_like_you're_in_the_middle_of_writing_something_and_you_haven't_saved_all_of_your_content.": "嗨！看起來你正在寫東西，而你還沒有保存所有的內容。",
+      "Are_you_sure_you_want_to_leave_this_page?": "確定要離開此頁嗎？",
+      "Hey_there!_It_looks_like_you're_in_the_middle_of_writing_something_and_you_haven't_saved_all_of_your_content.": "嗨！看起來您沒有儲存進行的更動",
       "Save_before_you_go!": "記得存檔！",
       "Stay": "留下",
       "Leave": "離開"
@@ -1400,7 +1400,7 @@
       "tag_on_every_page_of_the_site": " tag on every page of the site",
       "Save": "儲存",
       "Saved": "已儲存",
-      "Saving": "Salvando",
+      "Saving": "儲存中",
       "This_is_a_testing_ground_for_new_or_experimental_features._They_may_change,_break_or_inexplicably_disappear_at_any_time.": "This is a testing ground for new or experimental features. They may change, break or inexplicably disappear at any time.",
       "MIGRATION_OPTIONS": "MIGRATION OPTIONS",
       "Import_content": "Import content",
@@ -1414,7 +1414,7 @@
       "Delete": "Delete",
       "Would_you_really_like_to_delete_all_content_from_your_blog?": "Would you really like to delete all content from your blog?",
       "This_is_permanent!_No_backups,_no_restores,_no_magic_undo_button._We_warned_you,_k?": "This is permanent! No backups, no restores, no magic undo button. We warned you, k?",
-      "Cancel": "Cancel",
+      "Cancel": "取消",
       "BETA_FEATURES": "BETA FEATURES",
       "Redirects": "Redirects",
       "Configure_redirects_for_old_or_moved_content,_more_info_in_the_docs": "Configure redirects for old or moved content, more info in ",
@@ -1649,7 +1649,8 @@
       "Archived": "Archived",
       "Connected_to_Stripe": "Connected to Stripe",
       "Check_your_inbox_and_confirm_before_saving_your_settings": "Check your inbox and confirm before saving your settings",
-      "Manage_authors,_editor_and_collaborators": "管理作者、編者及合作者"
+      "Manage_authors,_editor_and_collaborators": "管理作者、編者及合作者",
+      "Site_design": "網站設計"
     },
     "View_site": {
       "View_site": "查看主頁"
@@ -1837,7 +1838,14 @@
       "Begin_writing_your": "Begin writing your ",
       "title_from": "Title from ",
       "Copy_link": "Copy Link",
-      "Link_copied": "Link copied"
+      "Link_copied": "Link copied",
+      "Site_design": "網站設計",
+      "Brand": "品牌",
+      "Site-wide": "網站範圍",
+      "Homepage": "首頁",
+      "Post": "文章",
+      "Change_theme": "換主題",
+      "Current": "目前"
     },
     "Designsandbox": {
       "Components": "Components",
@@ -1911,16 +1919,17 @@
       "Reorder": "Reorder",
       "Add": "Add",
       "Upgrade": "Upgrade",
-      "Accent_color": "Accent color",
-      "Primary_color_used_in_your_publication_theme": "Primary color used in your publication theme",
-      "Publication_icon": "Publication icon",
-      "A_square_social_icon_used_in_the_UI_of_your_publication_at_least_60x60px": "A square, social icon used in the UI of your publication, at least 60x60px",
-      "Upload_icon": "Upload icon",
-      "Publication_logo": "Publication logo",
-      "The_primary_logo_for_your_brand_displayed_across_your_theme_should_be_transparent_and_at_least_600pxx72px": "The primary logo for your brand displayed across your theme, should be transparent and at least 600px x 72px",
-      "Upload_logo": "Upload logo",
-      "Publication_cover": "Publication cover",
-      "An_optional_large_background_image_for_your_site": "An optional large background image for your site",
+      "Site_description": "網站描述",
+      "Accent_color": "重點色彩",
+      "Primary_color_used_in_your_publication_theme": "發布主題使用的主要顏色",
+      "Publication_icon": "發布圖示",
+      "A_square_social_icon_used_in_the_UI_of_your_publication_at_least_60x60px": "一個方形的社交圖示，至少60x60px",
+      "Upload_icon": "上傳圖示",
+      "Publication_logo": "發布logo",
+      "The_primary_logo_for_your_brand_displayed_across_your_theme_should_be_transparent_and_at_least_600pxx72px": "主要的標誌，須去背且至少600x72px",
+      "Upload_logo": "上傳logo",
+      "Publication_cover": "上傳logo",
+      "An_optional_large_background_image_for_your_site": "網站上的自選背景圖",
       "Upload_cover": "Upload cover",
       "Edit_current_view": "Edit current view...",
       "Save_as_view": "Save as view...",
@@ -2196,7 +2205,10 @@
       "Unpaid": "Unpaid",
       "Past_Due": "Past Due",
       "Incomplete": "Incomplete",
-      "Incomplete_Expired": "Incomplete - Expired"
+      "Incomplete_Expired": "Incomplete - Expired",
+      "Homepage": "首頁",
+      "Post": "文章",
+      "Site-wide": "網站範圍"
     }
   }
 }
