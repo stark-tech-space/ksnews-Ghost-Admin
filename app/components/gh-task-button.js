@@ -4,6 +4,7 @@ import { action, computed } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import { reads } from '@ember/object/computed';
 import { task, timeout } from 'ember-concurrency';
+import { inject as service } from '@ember/service';
 
 /**
  * Task Button works exactly like Spin button, but with one major difference:
@@ -17,6 +18,7 @@ import { task, timeout } from 'ember-concurrency';
  * component is removed from the DOM
  */
 const GhTaskButton = Component.extend({
+  intl: service(),
   tagName: 'button',
   classNameBindings: [
     'isRunning:appear-disabled',
@@ -31,15 +33,24 @@ const GhTaskButton = Component.extend({
   taskArgs: undefined,
   disabled: false,
   defaultClick: false,
-  buttonText: 'Save',
+  buttonText: computed('buttonText', function () {
+    return this.intl.t('Manual.Components.Save');
+  }),
   idleClass: '',
   runningClass: '',
   showIcon: true,
   showSuccess: true, // set to false if you want the spinner to show until a transition occurs
   autoReset: true, // set to false if you want don't want task button to reset after timeout
-  successText: 'Saved',
   successClass: 'gh-btn-green',
-  failureText: 'Retry',
+  successText: computed('sucessText', function () {
+    return this.intl.t('Manual.Components.Saved');
+  }),
+  runningText: computed('runningText', function () {
+    return this.intl.t('Manual.Components.Saving');
+  }),
+  failureText: computed('failureText', function () {
+    return this.intl.t('Manual.Components.Retry');
+  }),
   failureClass: 'gh-btn-red',
   unlinkedTask: false,
 
@@ -47,8 +58,6 @@ const GhTaskButton = Component.extend({
 
   // Allowed actions
   action: () => {},
-
-  runningText: reads('buttonText'),
 
   // hasRun is needed so that a newly rendered button does not show the last
   // state of the associated task

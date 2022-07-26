@@ -1647,7 +1647,9 @@
       "Activate": "Activate",
       "Archived": "Archived",
       "Check_your_inbox_and_confirm_before_saving_your_settings": "Check your inbox and confirm before saving your settings",
-      "Manage_authors,_editor_and_collaborators": "Manage authors, editor and collaborators"
+      "Manage_authors,_editor_and_collaborators": "Manage authors, editor and collaborators",
+      "Enable_newsletter_setting": "Enable newsletter sending",
+      "Newsletter_features_are_active,_posts_can_be_sent_by_email": "Newsletter features are active, posts can be sent by email"
     },
     "View_site": {
       "View_site": "View site"
