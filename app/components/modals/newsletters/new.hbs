@@ -1,10 +1,13 @@
 <div class='modal-content' data-test-modal='create-newsletter'>
   <header class='modal-header'>
-    <h1>Create newsletter</h1>
+    <h1>{{t 'Manual.Components.Create_newsletter'}}</h1>
   </header>
-  <button type='button' class='close' title='Close' {{on 'click' @close}}>{{svg-jar 'close'}}<span
-      class='hidden'
-    >Close</span></button>
+  <button
+    type='button'
+    class='close'
+    title={{t 'Manual.Components.Close'}}
+    {{on 'click' @close}}
+  >{{svg-jar 'close'}}<span class='hidden'>Close</span></button>
 
   <div class='modal-body'>
     <fieldset>
