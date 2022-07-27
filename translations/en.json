@@ -1676,7 +1676,9 @@
       "Specific_people": "Specific people",
       "Only_people_with_any_of_the_selected_tiers_or_labels": "Only people with any of the selected tiers or labels",
       "Usually_nobody": "Usually nobody",
-      "Newsletters_are_off_for_new_posts,_but_can_be_enabled_when_needed": "Newsletters are off for new posts, but can be enabled when needed"
+      "Newsletters_are_off_for_new_posts,_but_can_be_enabled_when_needed": "Newsletters are off for new posts, but can be enabled when needed",
+      "Themes": "Themes",
+      "Upload_theme": "Upload theme"
     },
     "View_site": {
       "View_site": "View site"
@@ -1713,6 +1715,7 @@
       "Highly_recommended_to_fix,_functionality": "Highly recommended to fix, functionality",
       "could": "could",
       "be_restricted": "be restricted",
+      "Select_or_drop_your_theme_zip_file": "Select or drop your theme zip file",
       "Close": "Close",
       "Cancel": "Cancel",
       "Overwrite": "Overwrite",
