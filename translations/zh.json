@@ -1362,8 +1362,8 @@
       "Choosing_one_of_these_newsletter_types_for_your_publication_will_help_you_create_better_content_at_a_faster_pace_with_less_work": "Choosing one of these newsletter types for your publication will help you create better content at a faster pace with less work."
     },
     "Settings": {
-      "Site_Header": "Site Header",
-      "Site_Footer": "Site Footer",
+      "Site_Header": "網站頁首",
+      "Site_Footer": "網站頁尾",
       "Sending": "Sending...",
       "Confirmation_email_sent": "Confirmation email sent",
       "Settings": "設置",
@@ -1391,9 +1391,9 @@
       "Customize_emails_and_set_email_addresses": "客製化郵件及郵件地址",
       "Add_code_to_your_publication": "加入代碼到出版物",
       "Testing_ground_for_new_features": "新功能測試處",
-      "Ghost_allows_you_to_inject_code_into_the_top_and_bottom_of_your_theme_files_without_editing_them._This_allows_for_quick_modifications_to_insert_useful_things_like_tracking_codes_and_meta_tags.": "Ghost allows you to inject code into the top and bottom of your theme files without editing them. This allows for quick modifications to insert useful things like tracking codes and meta tags.",
-      "Code_here_will_be_injected_into_the": "Code here will be injected into the ",
-      "tag_on_every_page_of_the_site": " tag on every page of the site",
+      "Ghost_allows_you_to_inject_code_into_the_top_and_bottom_of_your_theme_files_without_editing_them._This_allows_for_quick_modifications_to_insert_useful_things_like_tracking_codes_and_meta_tags.": "Ghost允許在您主題文檔的頭尾加入代碼而不需要修改他們。這項允許讓您能快速加入一些有用的資訊，像是追蹤代碼或元數據標籤等等。",
+      "Code_here_will_be_injected_into_the_tag_on_every_page_of_the_site_1": "這裡的代碼將會注入到網站每一頁的",
+      "Code_here_will_be_injected_into_the_tag_on_every_page_of_the_site_2": "",
       "Save": "儲存",
       "Saved": "已儲存",
       "Saving": "儲存中",
