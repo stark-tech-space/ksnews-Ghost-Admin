@@ -7,12 +7,8 @@
     </h2>
     <section class='view-actions'>
       <GhTaskButton
-        @buttonText={{t 'Manual.Components.Save'}}
         @task={{this.saveSettingsTask}}
-        @successText={{t 'Manual.Components.Saved'}}
-        @runningText={{t 'Manual.Components.Saving'}}
         @class='gh-btn gh-btn-primary gh-btn-icon'
-        @failureText={{t 'Manual.Components.Retry'}}
         {{on-key 'cmd+s'}}
         data-test-button='save-settings'
       />
