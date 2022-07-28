@@ -18,7 +18,7 @@ const userValidator = BaseValidator.extend(PasswordValidatorMixin, {
 
     if (this.isActive(model)) {
       if (isBlank(name)) {
-        model.get('errors').add('name', 'Please enter a name.');
+        model.get('errors').add('name', 'Please_enter_a_name');
         this.invalidate();
       } else if (!validator.isLength(name, 0, 191)) {
         model.get('errors').add('name', 'Name is too long');

@@ -198,7 +198,7 @@ export default Controller.extend({
         });
       } catch (e) {
         if (e === 'invalid url') {
-          errMessage = 'The URL must be in a format like ' + 'https://www.facebook.com/yourPage';
+          errMessage = 'The_URL_must_be_in_a_format_like_' + 'https://www.facebook.com/yourPage';
           this.get('user.errors').add('facebook', errMessage);
           return;
         }
@@ -241,8 +241,8 @@ export default Controller.extend({
         // check if username starts with http or www and show error if so
         if (username.match(/^(http|www)|(\/)/) || !username.match(/^[a-z\d._]{1,15}$/im)) {
           errMessage = !username.match(/^[a-z\d._]{1,15}$/im)
-            ? 'Your Username is not a valid Twitter Username'
-            : 'The URL must be in a format like https://twitter.com/yourUsername';
+            ? 'Your_Username_is_not_a_valid_Twitter_Username'
+            : 'The_URL_must_be_in_a_format_like_https://twitter.com/yourUsername';
 
           this.get('user.errors').add('twitter', errMessage);
           this.get('user.hasValidated').pushObject('twitter');
@@ -258,7 +258,7 @@ export default Controller.extend({
           this.set('user.twitter', newUrl);
         });
       } else {
-        errMessage = 'The URL must be in a format like ' + 'https://twitter.com/yourUsername';
+        errMessage = 'The_URL_must_be_in_a_format_like_' + 'https://twitter.com/yourUsername';
         this.get('user.errors').add('twitter', errMessage);
         this.get('user.hasValidated').pushObject('twitter');
         return;
