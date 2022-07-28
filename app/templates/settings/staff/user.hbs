@@ -7,7 +7,9 @@
       <h2 class='gh-canvas-title' data-test-screen-title>
         <LinkTo @route='settings'>{{t 'Manual.Settings.Settings'}}</LinkTo>
         <span>{{svg-jar 'arrow-right'}}</span>
-        <LinkTo @route='settings.staff' data-test-staff-link={{true}}>Staff</LinkTo>
+        <LinkTo @route='settings.staff' data-test-staff-link={{true}}>{{t
+            'Manual.Staff.Staff'
+          }}</LinkTo>
         <span>{{svg-jar 'arrow-right'}}</span>
         {{this.user.name}}
 
@@ -587,7 +589,7 @@
                       type='button'
                       {{action 'confirmRegenerateTokenModal'}}
                       class='app-button-regenerate'
-                      data-tooltip='Regenerate'
+                      data-tooltip={{t 'Manual.ProfilePicture.Regenerate'}}
                     >
                       {{svg-jar 'reload' class='w4 h4 stroke-midgrey'}}
                     </button>

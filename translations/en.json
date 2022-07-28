@@ -1879,6 +1879,7 @@
       "Current": "Current",
       "Are_you_sure_you_want_to_leave_this_page?": "Are you sure you want to leave this page?",
       "Hey_there!_It_looks_like_you_didn't_save_the_changes_you_made.": "Hey there! It looks like you didn't save the changes you made",
+      "Hey_there!_It_looks_like_you're_in_the_middle_of_writing_something_and_you_haven't_saved_all_of_your_content.": "Hey there! It looks like you're in the middle of writing something and you haven'tsaved all of your content.",
       "Save_before_you_go!": "Save before you go!",
       "Stay": "Stay",
       "Leave": "Leave",
@@ -2259,6 +2260,16 @@
       "Homepage": "Homepage",
       "Post": "Post",
       "Site-wide": "Site-wide"
+    },
+    "Errors": {
+      "Please_enter_an_email": "Please enter an email",
+      "Please_select_a_role": "Please select a role",
+      "Invalid_email": "Invalid email",
+      "Your_current_password_is_required_to_set_a_new_one": "Your current password is required to set a new one",
+      "Sorry,_passwords_can't_be_blank": "Sorry, passwords can't be blank",
+      "Your_new_passwords_do_not_match": "Your new passwords do not match",
+      "Password_must_be_at_least_10_characters_long": "Password must be at least 10 characters long",
+      "Sorry,_you_cannot_use_an_insecure_password": "Sorry, you cannot use an insecure password"
     }
   }
 }

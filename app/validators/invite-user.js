@@ -1,29 +1,29 @@
 import BaseValidator from './base';
 import validator from 'validator';
-import {isBlank} from '@ember/utils';
+import { isBlank } from '@ember/utils';
 
 export default BaseValidator.create({
-    properties: ['email', 'role'],
+  properties: ['email', 'role'],
 
-    email(model) {
-        let email = model.get('email');
+  email(model) {
+    let email = model.get('email');
 
-        if (isBlank(email)) {
-            model.get('errors').add('email', 'Please enter an email.');
-            this.invalidate();
-        } else if (!validator.isEmail(email)) {
-            model.get('errors').add('email', 'Invalid Email.');
-            this.invalidate();
-        }
-    },
-
-    role(model) {
-        let role = model.get('role');
-
-        if (isBlank(role)) {
-            model.get('errors').add('role', 'Please select a role.');
-            model.get('hasValidated').pushObject('role');
-            this.invalidate();
-        }
+    if (isBlank(email)) {
+      model.get('errors').add('email', 'Please_enter_an_email');
+      this.invalidate();
+    } else if (!validator.isEmail(email)) {
+      model.get('errors').add('email', 'Invalid_email');
+      this.invalidate();
     }
+  },
+
+  role(model) {
+    let role = model.get('role');
+
+    if (isBlank(role)) {
+      model.get('errors').add('role', 'Please select a role.');
+      model.get('hasValidated').pushObject('role');
+      this.invalidate();
+    }
+  },
 });
