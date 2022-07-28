@@ -65,9 +65,9 @@
           <div class='no-posts'>
             {{#if this.showingAll}}
               {{svg-jar 'posts-placeholder' class='gh-posts-placeholder'}}
-              <h4>Start creating content.</h4>
+              <h4>{{t 'Manual.Posts.Start_creating_content'}}</h4>
               <LinkTo @route='editor.new' @model='post' class='gh-btn gh-btn-green'>
-                <span>Write a new post</span>
+                <span>{{t 'Manual.Posts.Write_a_new_post'}}</span>
               </LinkTo>
             {{else}}
               <h4>{{t 'Manual.Posts.No_posts_match_the_current_filter'}}</h4>
