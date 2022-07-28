@@ -431,7 +431,7 @@
                   <GhFormGroup>
                     <GhImageUploaderWithPreview
                       @image={{this.settings.ogImage}}
-                      @text='Add Facebook image'
+                      @text={{t 'Manual.Settings.Add_Facebook_image'}}
                       @allowUnsplash={{true}}
                       @update={{action (mut this.settings.ogImage)}}
                       @remove={{action (mut this.settings.ogImage) ''}}

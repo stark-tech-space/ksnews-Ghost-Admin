@@ -778,7 +778,9 @@
       "Stay": "Stay",
       "Leave": "Leave",
       "You_havent_written_any_posts_yet": "You haven't written any posts yet!",
-      "Write_a_new_post": "Write a new post"
+      "Write_a_new_post": "Write a new post",
+      "Scheduled": "Scheduled",
+      "Published": "Published"
     },
     "Pages": {
       "Pages": "Pages",

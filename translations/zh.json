@@ -778,7 +778,9 @@
       "Stay": "留下",
       "Leave": "離開",
       "You_havent_written_any_posts_yet": "你還沒有任何文章",
-      "Write_a_new_post": "開始新文章t"
+      "Write_a_new_post": "開始新文章",
+      "Scheduled": "已發布",
+      "Published": "已預定"
     },
     "Pages": {
       "Pages": "頁面",
