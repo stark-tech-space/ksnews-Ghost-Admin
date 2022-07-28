@@ -1701,7 +1701,22 @@
       "Usually_nobody": "通常不發送給任何人",
       "Newsletters_are_off_for_new_posts,_but_can_be_enabled_when_needed": "新文章不發送電子報，但需要時可發送",
       "Themes": "主題",
-      "Upload_theme": "上傳主題"
+      "Upload_theme": "上傳主題",
+      "title_font": "標題字體",
+      "body_font": "內文字體",
+      "color_scheme": "色彩計畫",
+      "show_publication_cover": "顯示出版面封面",
+      "header_style": "頁首風格",
+      "show_logo_in_navigation": "在導航中顯示logo",
+      "feed_layout": "限時動態樣式",
+      "post_image_style": "圖片樣式",
+      "email_signup_text": "電子郵件註冊文本",
+      "show_recent_posts_footer": "顯示最近的文章頁尾",
+      "white_publication_logo_for_transparent_header": "透明頁首的白色發布logo",
+      "upload": "上傳",
+      "footer_text": "頁尾文案",
+      "enter_tag_slugs_for_primary_sections": "輸入主要區塊的標籤別名",
+      "enter_tag_slugs_for_secondary_sections": "輸入次要區塊的標籤別名"
     },
     "View_site": {
       "View_site": "查看主頁"
@@ -2220,7 +2235,7 @@
       "Ghost_takes_0_payment_fees": "Ghost takes 0% payment fees",
       "Make_Ghost_work_with_apps_and_tools": "讓Ghost與應用程式和工具合作",
       "Contributor": "Contributor",
-      "Owner": "hi",
+      "Owner": "擁有者",
       "Email_engagement": "Email engagement",
       "This_member_hasn_t_received_a_newsletter_yet_Once_they_do_we_ll_show_their_engagement_here": "This member hasn't received a newsletter yet. Once they do, we'll show their engagement here.",
       "This_metric_is_calculated_once_a_member_has_received_5_newsletters": "This metric is calculated once a member has received 5 newsletters.",

@@ -27,7 +27,9 @@
           {{else}}
             {{#unless this.session.user.isAuthorOrContributor}}
               {{#each this.user.roles as |role|}}
-                <span class='gh-badge {{role.lowerCaseName}}' data-test-role-name>{{role.name}}
+                <span class='gh-badge {{role.lowerCaseName}}' data-test-role-name>{{t
+                    (concat 'Manual.Others.' role.name)
+                  }}
                 </span>
               {{/each}}
             {{/unless}}

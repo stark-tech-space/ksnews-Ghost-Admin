@@ -1696,7 +1696,22 @@
       "Usually_nobody": "Usually nobody",
       "Newsletters_are_off_for_new_posts,_but_can_be_enabled_when_needed": "Newsletters are off for new posts, but can be enabled when needed",
       "Themes": "Themes",
-      "Upload_theme": "Upload theme"
+      "Upload_theme": "Upload theme",
+      "Title font": "Title font",
+      "Body font": "Body font",
+      "Color Scheme": "Color Scheme",
+      "Show publication cover": "Show publication cover",
+      "Header style": "Header style",
+      "Show logo in navigation": "Show logo in navigation",
+      "Feed layout": "Feed layout",
+      "Post image style": "Post image style",
+      "Email signup text": "Email signup text",
+      "Show recent posts footer": "Show recent posts footer",
+      "White publication logo for transparent header": "White publication logo for transparent header",
+      "Upload": "Upload",
+      "Footer text": "Footer text",
+      "Enter tag slugs for primary sections": "Enter tag slugs for primary sections",
+      "Enter tag slugs for secondary sections": "Enter tag slugs for secondary sections"
     },
     "View_site": {
       "View_site": "View site"
