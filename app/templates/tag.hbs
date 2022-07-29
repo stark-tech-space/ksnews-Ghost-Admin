@@ -4,7 +4,7 @@
       <h2 class='gh-canvas-title' data-test-screen-title>
         <LinkTo @route='tags' data-test-link='tags-back'>{{t 'Manual.Tags.Tags'}}</LinkTo>
         <span>{{svg-jar 'arrow-right'}}</span>
-        {{if this.tag.isNew 'New tag' this.tag.name}}
+        {{if this.tag.isNew (t 'Manual.Tags.New_tag') this.tag.name}}
       </h2>
       <section class='view-actions'>
         <GhTaskButton
@@ -21,6 +21,7 @@
       @scratchTag={{this.scratchTag}}
       @setProperty={{action 'setProperty'}}
     />
+
   </form>
 
   {{#unless this.tag.isNew}}
