@@ -8,7 +8,7 @@
             {{svg-jar 'search' class='gh-input-search-icon'}}
             <input
               type='text'
-              placeholder='Search members...'
+              placeholder={{t 'Manual.Members.Search_members...'}}
               value={{this.searchParam}}
               aria-label='Search members'
               class='gh-input gh-members-list-searchfield {{if this.searchParam "active"}}'
@@ -172,12 +172,12 @@
             <thead>
               <tr>
                 <th>{{this.listHeader}}</th>
-                <th data-test-table-column='status'>Status</th>
+                <th data-test-table-column='status'>{{t 'Manual.Members.Status'}}</th>
                 {{#if (not-eq this.settings.editorDefaultEmailRecipients 'disabled')}}
                   <th data-test-table-column='email_open_rate'>{{t 'Manual.Posts.Open_rate'}}</th>
                 {{/if}}
-                <th data-test-table-column='location'>Location</th>
-                <th data-test-table-column='created'>Created</th>
+                <th data-test-table-column='location'>{{t 'Manual.Members.Location'}}</th>
+                <th data-test-table-column='created'>{{t 'Manual.Members.Created'}}</th>
                 {{#each this.filterColumnLabels as |column|}}
                   <th data-test-table-column={{column.name}}>{{column.label}}</th>
                 {{/each}}
@@ -208,21 +208,23 @@
         {{else}}
           <div class='gh-members-empty' data-test-no-matching-members>
             {{svg-jar 'members-placeholder' class='gh-members-placeholder'}}
-            <h4>No members match the current filter</h4>
+            <h4>{{t 'Manual.Members.No_members_match_the_current_filter'}}</h4>
             <LinkTo
               @route='members'
               @query={{reset-query-params 'members.index'}}
               class='gh-btn mt4'
               data-test-button='show-all-members'
             >
-              <span>Show all members</span>
+              <span>{{t 'Manual.Members.Show_all_members'}}</span>
             </LinkTo>
           </div>
         {{/if}}
       {{/if}}
       {{#if (lt this.members.length 6)}}
         <div class='gh-main-section gh-members-help'>
-          <h2 class='gh-main-section-header small bn'>Get started with memberships</h2>
+          <h2 class='gh-main-section-header small bn'>{{t
+              'Manual.Members.Get_started_with_memberships'
+            }}</h2>
           <div class='gh-main-section-block'>
             <div class='gh-main-section-content grey'>
               <a
@@ -237,10 +239,11 @@
                     style='background-image: url(assets/img/marketing/members-1.jpg);'
                   ></div>
                   <div class='text'>
-                    <h3>Building your audience with subscriber signups</h3>
-                    <p>Learn how to turn anonymous visitors into logged-in members with memberships
-                      in Ghost.</p>
-                    <div class='gh-btn gh-btn-link'>Start building &rarr;</div>
+                    <h3>{{t 'Manual.Members.Building_your_audience_with_subscriber_signups'}}</h3>
+                    <p>{{t
+                        'Manual.Members.Learn_how_to_turn_anonymous_visitors_into_logged-in_members_with_memberships_in_Ghost.'
+                      }}</p>
+                    <div class='gh-btn gh-btn-link'>{{t 'Manual.Members.Start_building'}}</div>
                   </div>
                 </div>
               </a>
@@ -257,9 +260,11 @@
                     style='background-image: url(assets/img/marketing/members-2.jpg);'
                   ></div>
                   <div class='text'>
-                    <h3>Get your first 100 email subscribers</h3>
-                    <p>Starting from zero? Use this guide to find your founding audience members.</p>
-                    <div class='gh-btn gh-btn-link'>Become an expert &rarr;</div>
+                    <h3>{{t 'Manual.Members.Get_your_first_100_email_subscribers'}}</h3>
+                    <p>{{t
+                        'Manual.Members.Starting_from_zero?_Use_this_guide_to_find_your_founding_audience_members.'
+                      }}</p>
+                    <div class='gh-btn gh-btn-link'>{{t 'Manual.Members.Become_an_expert'}}</div>
                   </div>
                 </div>
               </a>
