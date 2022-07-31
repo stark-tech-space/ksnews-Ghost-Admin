@@ -1490,7 +1490,7 @@
       "Unknown_option": "未知選項",
       "Total_members": "全部會員",
       "Total_member": "全部會員",
-      "All_members": "All members",
+      "All_members": "全部會員",
       "Paid_member": "付費會員",
       "Paid_members": "付費會員",
       "Free_member": "免費會員",
@@ -1545,6 +1545,7 @@
       "Cancelled": "取消",
       "Cadence": "韻律",
       "Tiers": "層級",
+      "Paid_mix": "付費組合",
       "Monthly": "月度",
       "Annual": "年度"
     },
