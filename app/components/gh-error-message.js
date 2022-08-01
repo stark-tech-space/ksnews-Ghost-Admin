@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
-import {isEmpty} from '@ember/utils';
+import { isEmpty } from '@ember/utils';
+import { inject as service } from '@ember/service';
 
 /**
  * Renders one random error message when passed a DS.Errors object
@@ -10,19 +11,21 @@ import {isEmpty} from '@ember/utils';
  * @param  {string} property    The property name
  */
 export default class GhErrorMessage extends Component {
-    get message() {
-        let {property, errors} = this.args;
-        let messages = [];
-        let index;
+  @service intl;
 
-        if (!isEmpty(errors) && errors.get(property)) {
-            errors.get(property).forEach((error) => {
-                messages.push(error);
-            });
-            index = Math.floor(Math.random() * messages.length);
-            return messages[index].message;
-        }
+  get message() {
+    let { property, errors } = this.args;
+    let messages = [];
+    let index;
 
-        return '';
+    if (!isEmpty(errors) && errors.get(property)) {
+      errors.get(property).forEach((error) => {
+        messages.push(error);
+      });
+      index = Math.floor(Math.random() * messages.length);
+      return this.intl.t(`Manual.Errors.${messages[index].message}`);
     }
+
+    return '';
+  }
 }

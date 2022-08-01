@@ -1,35 +1,36 @@
 {{#let @publishOptions.post as |post|}}
-    <div class="gh-publish-title">
-        <span class="red">Uh-oh.</span>
+  <div class='gh-publish-title'>
+    <span class='red'>{{t 'Manual.Posts.Uh-oh.'}}</span>
 
-        {{#if @publishOptions.willOnlyEmail}}
-            Your post has been created but the email failed to send.
-        {{else}}
-            Your {{post.displayName}} has been published but the email failed to send.
-        {{/if}}
-    </div>
-
-    <p class="gh-publish-confirmation">
-        {{this.emailErrorMessage}}
-        <br><br>
-        Please verify your email settings if the error persists.
-    </p>
-
-    {{#if this.retryErrorMessage}}
-        <p class="error gh-box gh-box-error mt3 mb3">
-            {{this.retryErrorMessage}}
-        </p>
+    {{#if @publishOptions.willOnlyEmail}}
+      {{t 'Manual.Posts.Your_post_has_been_created_but_the_email_failed_to_send.'}}
+    {{else}}
+      {{t 'Manual.Posts.Your_'}}{{post.displayName}}{{t
+        'Manual.Posts.__has_been_published_but_the_email_failed_to_send.'
+      }}
     {{/if}}
+  </div>
 
-    <div class="gh-publish-cta">
-        <GhTaskButton
-            @task={{this.retryEmailTask}}
-            @buttonText="Retry sending email"
-            @runningText="Sending"
-            @successText="Sent"
-            @class="gh-btn gh-btn-large gh-btn-red"
-            @showIcon={{false}}
-        />
-    </div>
+  <p class='gh-publish-confirmation'>
+    {{this.emailErrorMessage}}
+    <br /><br />
+    {{t 'Manual.Posts.Please_verify_your_email_settings_if_the_error_persists.'}}
+  </p>
+
+  {{#if this.retryErrorMessage}}
+    <p class='error gh-box gh-box-error mt3 mb3'>
+      {{this.retryErrorMessage}}
+    </p>
+  {{/if}}
+
+  <div class='gh-publish-cta'>
+    <GhTaskButton
+      @task={{this.retryEmailTask}}
+      @buttonText={{t 'Manual.Components.Retry_sending_email'}}
+      @runningText={{t 'Manual.Components.Sending'}}
+      @successText={{t 'Manual.Components.Sent'}}
+      @class='gh-btn gh-btn-large gh-btn-red'
+      @showIcon={{false}}
+    />
+  </div>
 {{/let}}
-
