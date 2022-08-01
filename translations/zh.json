@@ -1362,9 +1362,11 @@
       "jamie@exemple.com": "jamie@exemple.com",
       "Password": "密碼",
       "Forgot?": "忘記密碼?",
+      "Please_check_your_email_for_instructions.": "請檢查您的電子郵件裡的說明來重置您的密碼",
       "We_need_your_email_address_to_reset_your_password!": "我們需要你的電子郵件地址來重置你的密碼!",
+      "There_was_a_problem_with_the_reset,_please_try_again.": "重置密碼出了問題，請再試一次。",
       "Failed_to_send_email.": "發送電子郵件失敗。",
-      "Sign_in": "登入",
+      "Sign_in": "登入 ->",
       "Sign_in_with_Google": "用Google登錄",
       "or": "或"
     },
