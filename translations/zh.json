@@ -2637,7 +2637,10 @@
       "Email_failures": "電子郵件失敗",
       "Comments": "評論",
       "Page": "頁面",
-      "_successfully_reverted_to_a_draft.": "成功回覆為草稿"
+      "_successfully_reverted_to_a_draft.": "成功回覆為草稿",
+      "7_Days": "7天",
+      "30_Days": "30天",
+      "90_Days": "90天"
     },
     "Errors": {
       "Please_enter_an_email": "請輸入電子郵件",

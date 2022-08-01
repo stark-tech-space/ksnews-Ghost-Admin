@@ -2632,7 +2632,10 @@
       "Email_failures": "Email failure",
       "Comments": "Comments",
       "Page": "Page",
-      "_successfully_reverted_to_a_draft.": " successfully reverted to a draft."
+      "_successfully_reverted_to_a_draft.": " successfully reverted to a draft.",
+      "7_Days": "7 days",
+      "30_Days": "30 days",
+      "90_Days": "90 days"
     },
     "Errors": {
       "Please_enter_an_email": "Please enter an email",
