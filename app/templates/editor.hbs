@@ -54,11 +54,18 @@
       <GhKoenigEditor
         @title={{readonly this.post.titleScratch}}
         @titleAutofocus={{this.shouldFocusTitle}}
-        @titlePlaceholder={{concat (capitalize this.post.displayName) ' title'}}
+        @titlePlaceholder={{concat
+          (t (concat 'Manual.Posts.' (capitalize this.post.displayName)))
+          (t 'Manual.Posts.title')
+        }}
         @onTitleChange={{this.updateTitleScratch}}
         @onTitleBlur={{perform this.saveTitleTask}}
         @body={{readonly this.post.scratch}}
-        @bodyPlaceholder={{concat 'Begin writing your ' this.post.displayName '...'}}
+        @bodyPlaceholder={{concat
+          (t 'Manual.Posts.Begin_writing_your_')
+          (t (concat 'Manual.Posts.' this.post.displayName))
+          '...'
+        }}
         @onBodyChange={{this.updateScratch}}
         @headerOffset={{editor.headerHeight}}
         @scrollContainerSelector='.gh-koenig-editor'

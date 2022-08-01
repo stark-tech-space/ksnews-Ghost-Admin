@@ -20,11 +20,11 @@
       {{#unless @hideAuthor}}
         <p>
           <span class='gh-content-entry-meta'>
-            By
+            {{t 'Manual.Others.By'}}
             <span class='midgrey-l2 fw5'>{{post-author-names @post}}</span>
 
             {{#if @post.primaryTag}}
-              in
+              {{t 'Manual.Others.in'}}
               <span class='midgrey-l2 fw5'>{{@post.primaryTag.name}}</span>
             {{/if}}
 
@@ -49,11 +49,11 @@
       {{#unless @hideAuthor}}
         <p>
           <span class='gh-content-entry-meta'>
-            By
+            {{t 'Manual.Others.By'}}
             <span class='midgrey-l2 fw5'>{{post-author-names @post}}</span>
 
             {{#if @post.primaryTag}}
-              in
+              {{t 'Manual.Others.in'}}
               <span class='midgrey-l2 fw5'>{{@post.primaryTag.name}}</span>
             {{/if}}
 

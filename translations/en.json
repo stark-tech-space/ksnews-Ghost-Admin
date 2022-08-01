@@ -694,6 +694,8 @@
       "New": "New",
       "Add_feature_image": "Add feature image",
       "Post_title": "Post title",
+      "title": " title",
+      "Begin_writing_your_": "Begin writing your ",
       "Begin_writing_you_post...": "Begin writing you post...",
       "Search_free_high-resolution_photos": "Search free high-resolution photos",
       "Insert_image": "Insert image",
@@ -770,6 +772,8 @@
       "Test_email": "Test email",
       "Preview_in_browser": "Preview in browser",
       "Send_test_email": "Send_test_email",
+      "Sending...": "Sending...",
+      "Sent": "Sent",
       "Code_injection": "Code injection",
       "Add_styles/scripts_to_the_header_&_footer": "Add styles/scripts to the header & footer",
       "Feature_this ": "Feature this ",
@@ -797,6 +801,7 @@
       "Pages": "Pages",
       "Page": "Page",
       "Post": "Post",
+      "post": "post",
       "words": "words",
       "word": "word",
       "URL": "URL",
@@ -804,7 +809,12 @@
       "Back": "Back",
       "Delete": "Delete",
       "header": "header",
-      "footer": "footer"
+      "footer": "footer",
+      "Editor": "Editor",
+      "To": "To",
+      "Free_member": "Free member",
+      "Paid_member": "Paid member",
+      "This_is_how_your_content_will_look_when_shared,_you_can_click_on_any_elements_you’d_like_to_edit.": "This is how your content will look when shared, you can click on any elements you’d like to edit."
     },
     "Pages": {
       "Pages": "Pages",
@@ -990,7 +1000,13 @@
       "New_tags": "New tags",
       "This_tag_is_attached_to": "This tag is attached to ",
       "post": "post",
-      "posts": "posts"
+      "posts": "posts",
+      "Change": "Change",
+      "Upload": "Upload",
+      "plus_Add_image": "+ Add image",
+      "_image": " image",
+      "Remove_custom_Facebook_image": "Remove custom Facebook image",
+      "Remove_custom_Twitter_image": "Remove custom Twitter image"
     },
     "Members": {
       "Member": "Member",
@@ -2136,11 +2152,7 @@
       "Unpublish": "Unpublish",
       "Unschedule": "Unschedule",
       "Preview": "Preview",
-      "is": "is",
-      "contains": "contains",
-      "does_not_contain": "does not contain",
-      "starts_with": "starts with",
-      "ends_with": "ends with"
+      "Publish": "Publish"
     },
     "Designsandbox": {
       "Components": "Components",
@@ -2310,6 +2322,7 @@
       "Add_tier": "Add tier",
       "Label": "Label",
       "By": "By",
+      "in": "in",
       "opens": " opens",
       "Scheduled": "Scheduled",
       "settings": "settings",

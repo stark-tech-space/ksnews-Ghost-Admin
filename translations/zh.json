@@ -667,6 +667,7 @@
   "Manual": {
     "Posts": {
       "Title": "標題",
+      "title": "標題",
       "Sends": "發送",
       "Opens": "開啟",
       "Status": "狀態",
@@ -694,6 +695,7 @@
       "New": "新",
       "Add_feature_image": "上傳精選圖片",
       "Post_title": "文章標題",
+      "Begin_writing_your_": "開始寫你的",
       "Begin_writing_you_post...": "開始寫你的文章.",
       "Search_free_high-resolution_photos": "搜索免費的高清晰度圖片",
       "Insert_image": "插入圖片",
@@ -770,6 +772,8 @@
       "Test_email": "測試電子郵件",
       "Preview_in_browser": "在瀏覽器中預覽",
       "Send_test_email": "傳送測試電子郵件",
+      "Sending...": "傳送中",
+      "Sent": "已傳送",
       "Code_injection": "代碼注入",
       "Add_styles/scripts_to_the_header_&_footer": "在header和footer添加樣式/腳本",
       "Feature_this": "設為精選",
@@ -794,6 +798,7 @@
       "Pages": "頁面",
       "Page": "頁面",
       "Post": "文章",
+      "post": "文章",
       "words": "字",
       "word": "字",
       "URL": "網址",
@@ -801,7 +806,12 @@
       "Back": "返回",
       "Delete": "刪除",
       "header": "頁首",
-      "footer": "頁尾"
+      "footer": "頁尾",
+      "Editor": "編輯",
+      "To": "收件人",
+      "Free_member": "免費會員",
+      "Paid_member": "付費會員",
+      "This_is_how_your_content_will_look_when_shared,_you_can_click_on_any_elements_you’d_like_to_edit.": "這是您分享文章時的樣子。您可以點擊編輯"
     },
     "Pages": {
       "Pages": "頁面",
@@ -986,7 +996,13 @@
       "Tag_footer": "標籤頁尾",
       "This_tag_is_attached_to": "此標籤附屬於",
       "post": "篇文章",
-      "posts": "篇文章"
+      "posts": "篇文章",
+      "Change": "更改",
+      "Upload": "上傳",
+      "plus_Add_image": "+ 新增圖片",
+      "_image": "圖片",
+      "Remove_custom_Facebook_image": "刪除自定Facebook圖片",
+      "Remove_custom_Twitter_image": "刪除自定Twitter圖片"
     },
     "Members": {
       "Member": "會員",
@@ -2144,7 +2160,8 @@
       "Updated": "已更新",
       "Unpublish": "取消發布",
       "Unschedule": "取消預定",
-      "Preview": "預覽"
+      "Preview": "預覽",
+      "Publish": "發布"
     },
     "Designsandbox": {
       "Components": "Components",
@@ -2310,7 +2327,8 @@
       "Yearly": "Yearly",
       "Add_tier": "Add tier",
       "Label": "Label",
-      "By": "By",
+      "By": "作者",
+      "in": "在",
       "opens": " opens",
       "Scheduled": "Scheduled",
       "settings": "settings",
