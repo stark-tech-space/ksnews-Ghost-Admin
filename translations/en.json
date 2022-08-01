@@ -882,7 +882,8 @@
       "scheduled": "scheduled",
       "archived": "archived",
       "sent": "sent",
-      "draft": "draft"
+      "draft": "draft",
+      "Sort_by": "Sort by"
     },
     "Pages": {
       "Pages": "Pages",

@@ -879,7 +879,8 @@
       "scheduled": "預定",
       "archived": "封存",
       "sent": "寄出",
-      "draft": "草稿"
+      "draft": "草稿",
+      "Sort_by": "分類"
     },
     "Pages": {
       "Pages": "頁面",

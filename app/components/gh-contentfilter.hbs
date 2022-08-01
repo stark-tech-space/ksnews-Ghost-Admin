@@ -89,7 +89,11 @@
     </div>
   {{/unless}}
 
-  <div class='gh-contentfilter-menu gh-contentfilter-sort' data-test-order-select='true'>
+  <div
+    class='gh-contentfilter-menu gh-contentfilter-sort'
+    data-test-order-select='true'
+    title={{t 'Manual.Posts.Sort_by'}}
+  >
 
     <PowerSelect
       @selected={{@selectedOrder}}
