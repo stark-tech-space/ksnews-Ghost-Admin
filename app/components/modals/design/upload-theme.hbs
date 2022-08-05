@@ -4,8 +4,10 @@
       <h1>
         {{#if this.theme}}
           {{#if this.hasWarningsOrErrors}}
-            Upload successful with
-            {{#if this.validationErrors}}errors{{else}}warnings{{/if}}
+            {{t 'Manual.Components.Upload_successful_with'}}
+            {{#if this.validationErrors}}{{t 'Manual.Components.errors'}}{{else}}{{t
+                'Manual.Components.warnings'
+              }}{{/if}}
           {{else}}
             {{t 'Manual.Components.Upload_successful'}}
           {{/if}}
@@ -27,23 +29,34 @@
       {{#if this.theme}}
         {{#if this.hasWarningsOrErrors}}
           <p data-test-state='installed-with-notes'>
-            The theme
-            <strong>"{{this.themeName}}"</strong>
-            was installed successfully but we detected some
-            {{if this.validationErrors 'errors' 'warnings'}}.
+            {{t 'Manual.Components.The_theme_'}}<strong>"{{this.themeName}}"</strong>{{t
+              'Manual.Components._was_installed_successfully_but_we_detected_some_'
+            }}
+            {{if
+              this.validationErrors
+              (t 'Manual.Components.errors')
+              (t 'Manual.Components.warnings')
+            }}.
             {{#if this.canActivateTheme}}
-              You are still able to activate and use the theme but it is recommended to fix these
-              {{if this.validationErrors 'errors' 'warnings'}}
-              before you do so.
+              {{t
+                'Manual.Components.You_are_still_able_to_activate_and_use_the_theme_but_it_is_recommended_to_fix_these_'
+              }}
+              {{if
+                this.validationErrors
+                (t 'Manual.Components.errors')
+                (t 'Manual.Components.warnings')
+              }}{{t 'Manual.Components._before_you_do_so'}}
             {{/if}}
           </p>
 
           {{#if this.validationErrors}}
             <div>
-              <h2 class='mb0 mt4 f5 fw6'>Errors</h2>
-              <p class='mb2'>Highly recommended to fix, functionality
-                <strong>could</strong>
-                be restricted</p>
+              <h2 class='mb0 mt4 f5 fw6'>{{t 'Manual.Components.Errors'}}</h2>
+              <p class='mb2'>{{t
+                  'Manual.Components.Highly_recommended_to_fix,_functionality_'
+                }}<strong>{{t 'Manual.Components.could'}}</strong>{{t
+                  'Manual.Components._be_restricted'
+                }}</p>
             </div>
             <ul class='pa0'>
               {{#each this.validationErrors as |error|}}
@@ -56,7 +69,7 @@
 
           {{#if this.validationWarnings}}
             <div>
-              <h2 class='mb0 mt4 f5 fw6'>Warnings</h2>
+              <h2 class='mb0 mt4 f5 fw6'>{{t 'Manual.Components.Warnings'}}</h2>
             </div>
             <ul class='pa0'>
               {{#each this.validationWarnings as |error|}}
@@ -69,27 +82,28 @@
         {{else}}
           <p data-test-state='installed-no-notes'>
             <strong>{{this.themeName}}</strong>
-            uploaded successfully.
-            {{#if this.canActivateTheme}}Do you want to activate it now?{{/if}}
+            {{t 'Manual.Components._uploaded_successfully.'}}
+            {{#if this.canActivateTheme}}{{t 'Manual.Components._uploaded_successfully.'}}{{/if}}
           </p>
         {{/if}}
       {{else if this.displayOverwriteWarning}}
         <p data-test-state='overwrite'>
-          The theme
+          {{t 'Manual.Components.The_theme_.'}}
           <strong>"{{this.fileThemeName}}"</strong>
-          already exists. Do you want to overwrite it?
+          {{t 'Manual.Components.already_exists._Do_you_want_to_overwrite_it?'}}
         </p>
       {{else if (or this.validationErrors this.fatalValidationErrors)}}
 
         <p data-test-state='invalid'>
-          This theme is invalid and cannot be activated. Fix the following errors and re-upload the
-          theme.
+          {{t
+            'Manual.Components.already_exists.This_theme_is_invalid_and_cannot_be_activated._Fix_the_following_errors_and_re-upload_the_theme.'
+          }}
         </p>
 
         {{#if this.fatalValidationErrors}}
           <div>
-            <h2 class='mb0 mt4 f5 fw6'>Fatal Errors</h2>
-            <p class='mb2'>Must-fix to activate theme</p>
+            <h2 class='mb0 mt4 f5 fw6'>{{t 'Manual.Components.Fatal_Errors'}}</h2>
+            <p class='mb2'>{{t 'Manual.Components.Must-fix_to_activate_theme'}}</p>
           </div>
 
           <ul class='pa0'>
@@ -103,10 +117,10 @@
 
         {{#if this.validationErrors}}
           <div>
-            <h2 class='mb0 mt4 f5 fw6'>Errors</h2>
-            <p class='mb2'>Highly recommended to fix, functionality
-              <strong>could</strong>
-              be restricted</p>
+            <h2 class='mb0 mt4 f5 fw6'>{{t 'Manual.Components.Errors'}}</h2>
+            <p class='mb2'>{{t 'Manual.Components.Highly_recommended_to_fix,_functionality_'}}
+              <strong>{{t 'Manual.Components.could'}}</strong>
+              {{t 'Manual.Components._be_restricted'}}</p>
           </div>
           <ul class='pa0'>
             {{#each this.validationErrors as |error|}}
@@ -165,7 +179,7 @@
             class='gh-btn gh-btn-red'
             data-test-button='overwrite'
           >
-            <span>Overwrite</span>
+            <span>{{t 'Manual.Components.Overwrite'}}</span>
           </button>
         {{/if}}
         {{#if this.canActivateTheme}}
@@ -175,7 +189,9 @@
             class='gh-btn gh-btn-primary'
             data-test-button='activate'
           >
-            <span>Activate{{#if this.validationErrors}} with errors{{/if}}</span>
+            <span>{{t 'Manual.Components.Activate'}}{{#if this.validationErrors}}{{t
+                  'Manual.Components.with_errors'
+                }}{{/if}}</span>
           </button>
         {{/if}}
         {{#if (or this.validationErrors this.fatalValidationErrors)}}
