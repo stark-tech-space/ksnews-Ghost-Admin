@@ -1,0 +1,104 @@
+<section class='gh-canvas'>
+  <GhCanvasHeader class='gh-canvas-header'>
+    <h2 class='gh-canvas-title' data-test-screen-title>
+      {{t 'Manual.Settings.Settings'}}
+    </h2>
+  </GhCanvasHeader>
+
+  <section class='view-container'>
+    <div class='gh-setting-header gh-first-header'>{{t 'Manual.Settings.Website'}}</div>
+    <div class='gh-settings-main-grid'>
+      <LinkTo class='gh-setting-group' @route='settings.general' data-test-nav='general'>
+        <span class='yellow'>{{svg-jar 'settings'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.General'}}</h4>
+          <p>{{t 'Manual.Settings.Basic_publication_details_and_site_metadata'}}</p>
+        </div>
+      </LinkTo>
+      <LinkTo class='gh-setting-group' @route='settings.design' data-test-nav='design'>
+        <span class='blue'>{{svg-jar 'paint-palette'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Design'}}</h4>
+          <p>{{t 'Manual.Others.Customize_your_site_and_manage_themes'}}</p>
+        </div>
+      </LinkTo>
+      <LinkTo class='gh-setting-group' @route='settings.navigation' data-test-nav='navigation'>
+        <span class='pink'>{{svg-jar 'compass-2'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Navigation'}}</h4>
+          <p>{{t 'Manual.Settings.Set_up_primary_and_secondary_menus'}}</p>
+        </div>
+      </LinkTo>
+
+      <LinkTo class='gh-setting-group' @route='settings.staff' data-test-nav='staff'>
+        <span class='green'>{{svg-jar 'staff'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Staff'}}</h4>
+          <p>{{t 'Manual.Settings.Manage_authors,_editor_and_collaborators'}}</p>
+        </div>
+      </LinkTo>
+    </div>
+
+    <div class='gh-setting-header'>{{t 'Manual.Settings.Members'}}</div>
+    <div class='gh-settings-main-grid'>
+      <LinkTo
+        class='gh-setting-group'
+        @route='settings.membership'
+        data-test-nav='members-membership'
+      >
+        <span class='blue'>{{svg-jar 'members'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Membership'}}</h4>
+          <p>{{t 'Manual.Settings.Access,_subscription,_and_pricing_options'}}</p>
+        </div>
+      </LinkTo>
+      <LinkTo class='gh-setting-group' @route='settings.newsletters' data-test-nav='members-email'>
+        <span class='yellow'>{{svg-jar 'email-stroke'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Email_newsletter'}}</h4>
+          <p>{{t 'Manual.Settings.Customize_emails_and_set_email_addresses'}}</p>
+        </div>
+      </LinkTo>
+    </div>
+
+    <div class='gh-setting-header'>{{t 'Manual.Settings.Advanced'}}</div>
+    <div class='gh-settings-main-grid'>
+      <LinkTo class='gh-setting-group' @route='settings.integrations' data-test-nav='integrations'>
+        <span class='yellow'>{{svg-jar 'module'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Integrations'}}</h4>
+          <p>{{t 'Manual.Others.Make_Ghost_work_with_apps_and_tools'}}</p>
+        </div>
+      </LinkTo>
+
+      <LinkTo
+        class='gh-setting-group'
+        @route='settings.code-injection'
+        data-test-nav='code-injection'
+      >
+        <span class='green'>{{svg-jar 'brackets'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Code_injection'}}</h4>
+          <p>{{t 'Manual.Settings.Add_code_to_your_publication'}}</p>
+        </div>
+      </LinkTo>
+
+      <LinkTo class='gh-setting-group' @route='settings.labs' data-test-nav='labs'>
+        <span class='pink'>{{svg-jar 'labs'}}</span>
+        <div>
+          <h4>{{t 'Manual.Settings.Labs'}}</h4>
+          <p>{{t 'Manual.Settings.Testing_ground_for_new_features'}}</p>
+        </div>
+      </LinkTo>
+    </div>
+  </section>
+</section>
+
+{{#if this.showLeaveSettingsModal}}
+  <GhFullscreenModal
+    @modal='leave-settings'
+    @confirm={{action 'leavePortalSettings'}}
+    @close={{action 'closeLeaveSettingsModal'}}
+    @modifier='action wide'
+  />
+{{/if}}

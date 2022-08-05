@@ -1,0 +1,187 @@
+<div class='gh-roles-container' {{did-insert (perform this.fetchRolesTask)}}>
+  {{#if this.fetchRolesTask.isRunning}}
+    {{! width and height are needed to avoid layout shift after roles have loaded }}
+    <div style='width: 486px; height: 268px'>
+      <GhLoadingSpinner />
+    </div>
+  {{else}}
+    <div
+      class='gh-radio {{if (eq @selected.name "Contributor") "active"}}'
+      {{on 'click' (fn this.setRole 'Contributor')}}
+      data-test-option='Contributor'
+    >
+      <div class='gh-radio-button'></div>
+      <div class='gh-radio-content'>
+        <div class='gh-radio-label'>{{t 'Manual.Staff.Contributor'}}</div>
+        <div class='gh-radio-desc'>{{t
+            'Manual.Staff.Can_create_and_edit_their_own_posts,_but_cannot_publish._An_Editor_needs_to_approve_and_publish_for_them'
+          }}</div>
+      </div>
+      <div>
+        {{! Inner container collapses height to the SVG so popover can align correctly }}
+        <div>
+          {{svg-jar 'info'}}
+          <EmberPopover @tooltipClass='popover' @arrowClass='popover-arrow' @side='left'>
+            <table>
+              <tbody>
+                <tr>
+                  <td class='left'>{{t 'Manual.Settings.Settings'}}</td>
+                  <td>{{t 'Manual.Staff.View_and_edit_own_profile'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Posts.Posts'}}</td>
+                  <td>{{t 'Manual.Staff.Create_and_edit_own_draft_posts'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </EmberPopover>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class='gh-radio {{if (eq @selected.name "Author") "active"}}'
+      {{on 'click' (fn this.setRole 'Author')}}
+      data-test-option='Author'
+    >
+      <div class='gh-radio-button'></div>
+      <div class='gh-radio-content'>
+        <div class='gh-radio-label'>{{t 'Manual.Staff.Author'}}</div>
+        <div class='gh-radio-desc'>{{t
+            'Manual.Staff.A_trusted_user_who_can_create,_edit_and_publish_their_own_posts,_but_can’t_modify_others.'
+          }}</div>
+      </div>
+      <div>
+        {{! Inner container collapses height to the SVG so popover can align correctly }}
+        <div>
+          {{svg-jar 'info'}}
+          <EmberPopover @tooltipClass='popover' @arrowClass='popover-arrow' @side='left'>
+            <table>
+              <tbody>
+                <tr>
+                  <td class='left'>{{t 'Manual.Settings.Settings'}}</td>
+                  <td>{{t 'Manual.Staff.View_and_edit_own_profile'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Users'}}</td>
+                  <td>{{t 'Manual.Staff.Browse_users'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Posts'}}</td>
+                  <td>{{t 'Manual.Staff.View,_edit_and_publish_own_posts,_generate_slugs'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Tags'}}</td>
+                  <td>{{t 'Manual.Staff.Add_tags'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </EmberPopover>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class='gh-radio {{if (eq @selected.name "Editor") "active"}}'
+      {{on 'click' (fn this.setRole 'Editor')}}
+      data-test-option='Editor'
+    >
+      <div class='gh-radio-button'></div>
+      <div class='gh-radio-content'>
+        <div class='gh-radio-label'>{{t 'Manual.Staff.Editor'}}</div>
+        <div class='gh-radio-desc'>{{t
+            'Manual.Staff.Can_invite_and_manage_other_Authors_and_Contributors,_as_well_as_edit_and_publish_any_posts_on_the_site.'
+          }}</div>
+      </div>
+      <div>
+        {{! Inner container collapses height to the SVG so popover can align correctly }}
+        <div>
+          {{svg-jar 'info'}}
+          <EmberPopover @tooltipClass='popover' @arrowClass='popover-arrow' @side='left'>
+            <table>
+              <tbody>
+                <tr>
+                  <td class='left'>{{t 'Manual.Settings.Settings'}}</td>
+                  <td>{{t 'Manual.Staff.View_and_edit_own_profile'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Users'}}</td>
+                  <td>{{t
+                      'Manual.Staff.Browse_users,_manage_authors_and_contributors_(invite,_revoke,_delete)'
+                    }}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Posts'}}</td>
+                  <td>{{t
+                      'Manual.Staff.Create,_publish,_edit_and_delete_all_posts,_generate_slugs'
+                    }}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Tags'}}</td>
+                  <td>{{t 'Manual.Staff.Edit,_add_and_delete_tags'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </EmberPopover>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class='gh-radio {{if (eq @selected.name "Administrator") "active"}}'
+      {{on 'click' (fn this.setRole 'Administrator')}}
+      data-test-option='Administrator'
+    >
+      <div class='gh-radio-button'></div>
+      <div class='gh-radio-content'>
+        <div class='gh-radio-label'>{{t 'Manual.Staff.Administrator'}}</div>
+        <div class='gh-radio-desc'>{{t
+            'Manual.Staff.Trusted_staff_user_who_should_be_able_to_manage_all_content_and_users,_as_well_as_site_settings_and_options.'
+          }}</div>
+      </div>
+      <div>
+        {{! Inner container collapses height to the SVG so popover can align correctly }}
+        <div>
+          {{svg-jar 'info'}}
+          <EmberPopover @tooltipClass='popover' @arrowClass='popover-arrow' @side='left'>
+            <table>
+              <tbody>
+                <tr>
+                  <td class='left'>{{t 'Manual.Settings.Settings'}}</td>
+                  <td>{{t 'Manual.Staff.Access_all_except_Stripe_settings'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Users'}}</td>
+                  <td>{{t 'Manual.Staff.Manage_all_users_(invite,_revoke,_delete)'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Posts'}}</td>
+                  <td>{{t
+                      'Manual.Staff.Create,_publish,_edit_and_delete_all_posts,_generate_slugs'
+                    }}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Tags'}}</td>
+                  <td>{{t 'Manual.Staff.Edit,_add_and_delete_tags'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Database'}}</td>
+                  <td>{{t 'Manual.Staff.Import,_export_and_delete_all_content'}}</td>
+                </tr>
+                <tr>
+                  <td class='left'>{{t 'Manual.Staff.Email'}}</td>
+                  <td>{{t 'Manual.Staff.Send_newsletters_and_test_emails'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </EmberPopover>
+        </div>
+      </div>
+    </div>
+
+    <div class='gh-content-box pa' hidden={{if this.limitErrorMessage false true}}>
+      {{html-safe this.limitErrorMessage}}
+      {{t 'Manual.Staff.To_use_selected_user_role,_upgrade_to_a_different_plan.'}}
+    </div>
+  {{/if}}
+</div>

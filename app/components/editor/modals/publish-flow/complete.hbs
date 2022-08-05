@@ -1,0 +1,119 @@
+{{#let @publishOptions.post as |post|}}
+  <div class='gh-publish-title' data-test-publish-flow='complete' data-test-complete-title>
+    {{#if post.isScheduled}}
+      <span class='green'>{{t 'Manual.Posts.All_set!'}}</span>
+      {{t 'Manual.Posts.Your_'}}{{t
+        (concat 'Manual.Posts.' (if post.emailOnly 'email' post.displayName))
+      }}{{t 'Manual.Posts._will_be_'}}{{#if post.emailOnly}}
+        {{t 'Manual.Posts.sent_'}}{{else if post.willEmail}}{{t
+          'Manual.Posts.published_and_sent_'
+        }}{{else}}{{t 'Manual.Posts.published_'}}{{/if}}
+
+      {{#let (moment-site-tz post.publishedAtUTC) as |scheduledAt|}}{{#if
+          (is-moment-today scheduledAt)
+        }}{{t 'Manual.Posts.today_'}}{{else}}{{t 'Manual.Posts.on_'}}{{moment-format
+            scheduledAt
+            'MMMM Do'
+          }}{{/if}}{{t 'Manual.Posts.at_'}}
+        {{moment-format scheduledAt 'HH:mm'}}.{{/let}}{{else}}
+      <span class='green'>{{t 'Manual.Posts.Boom._It’s_out_there.'}}</span>
+
+      {{#if post.emailOnly}}
+        {{t 'Manual.Posts.Your_email_has_been_sent.'}}{{else if (and post.isPost @postCount)}}{{t
+          'Manual.Posts.That’s_'
+        }}
+        {{@postCount}}
+        {{t (concat 'Manual.Posts.' (gh-pluralize @postCount 'post' without-count=true))}}{{t
+          'Manual.Posts._published,_keep_going!'
+        }}{{else}}{{t 'Manual.Posts.Your_'}}{{t (concat 'Manual.Posts.' post.displayName)}}{{t
+          'Manual.Posts._has_been_published.'
+        }}
+      {{/if}}
+    {{/if}}
+  </div>
+
+  {{#if post.emailOnly}}
+    <div class='gh-publish-confirmation' data-test-complete-details>
+      <p>
+        {{t 'Manual.Posts.Your_post_'}}{{if
+          post.isScheduled
+          (t 'Manual.Posts.will_be')
+          (t 'Manual.Posts.was')
+        }}{{t 'Manual.Posts.sent_to_'}}{{#let
+          (members-count-fetcher query=(hash filter=post.fullRecipientFilter))
+          as |countFetcher|
+        }}
+          <strong>
+            {{if
+              (eq @recipientType 'all')
+              (t 'Manual.Posts.all')
+            }}{{countFetcher.count}}{{! @recipientType = free/paid/all/specific }}{{if
+              (not-eq @recipientType 'all')
+              @recipientType
+            }}{{t
+              (concat
+                'Manual.Posts.' (gh-pluralize countFetcher.count 'subscriber' without-count=true)
+              )
+            }}
+          </strong>{{#unless @publishOptions.onlyDefaultNewsletter}}
+            {{t 'Manual.Posts.of'}}
+            <strong>{{@publishOptions.newsletter.name}}</strong>{{if post.isScheduled ',' '.'}}
+          {{/unless}}
+        {{/let}}{{#let (moment-site-tz post.publishedAtUTC) as |publishedAt|}}{{t
+            'Manual.Posts.on'
+          }}{{moment-format publishedAt 'D MMM YYYY'}}{{t 'Manual.Posts.at'}}{{moment-format
+            publishedAt
+            'HH:mm'
+          }}.{{/let}}
+      </p>
+      {{#if post.isScheduled}}
+        <p>
+          {{t 'Manual.Posts.Need_to_make_a_change?'}}
+          <button
+            type='button'
+            class='gh-revert-to-draft'
+            {{on 'click' (fn @close (hash afterTask='revertToDraftTask'))}}
+          >
+            <span>{{t 'Manual.Posts.Unschedule_and_revert_to_draft'}} &rarr;</span>
+          </button>
+        </p>
+      {{/if}}
+    </div>
+  {{else}}
+    <a
+      href={{post.url}}
+      class='gh-post-bookmark-wrapper'
+      target='_blank'
+      rel='noopener noreferrer'
+      data-test-complete-bookmark
+    >
+      <GhPostBookmark @post={{post}} />
+    </a>
+
+    {{#if post.isScheduled}}
+      <p class='gh-publish-confirmation'>
+        {{t 'Manual.Posts.Need_to_make_a_change?'}}
+        <button
+          type='button'
+          class='gh-revert-to-draft'
+          {{on 'click' (fn @close (hash afterTask='revertToDraftTask'))}}
+          data-test-button='revert-to-draft'
+        >
+          <span>{{t 'Manual.Posts.Unschedule_and_revert_to_draft'}} &rarr;</span>
+        </button>
+      </p>
+    {{else}}
+      <p class='gh-publish-confirmation'>
+        <button
+          type='button'
+          class='gh-back-to-editor'
+          {{on 'click' @close}}
+          data-test-button='back-to-editor'
+        >
+          <span>{{t 'Manual.Posts.Back_to_editor'}}</span>
+        </button>
+      </p>
+    {{/if}}
+  {{/if}}
+
+{{/let}}

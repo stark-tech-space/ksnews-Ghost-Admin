@@ -1,0 +1,91 @@
+<section class='gh-canvas'>
+  <GhCanvasHeader class='gh-canvas-header break tablet post-header'>
+    <GhCustomViewTitle
+      @title={{if
+        this.session.user.isContributor
+        (concat this.config.blogTitle 'posts')
+        (t 'Manual.Posts.Posts')
+      }}
+      @query={{reset-query-params 'posts'}}
+    />
+
+    <section class='view-actions'>
+      <GhContentfilter
+        @currentUser={{this.session.user}}
+        @selectedType={{this.selectedType}}
+        @availableTypes={{this.availableTypes}}
+        @onTypeChange={{action 'changeType'}}
+        @selectedVisibility={{this.selectedVisibility}}
+        @availableVisibilities={{this.availableVisibilities}}
+        @onVisibilityChange={{action 'changeVisibility'}}
+        @selectedAuthor={{this.selectedAuthor}}
+        @availableAuthors={{this.availableAuthors}}
+        @onAuthorChange={{action 'changeAuthor'}}
+        @selectedTag={{this.selectedTag}}
+        @availableTags={{this.availableTags}}
+        @onTagChange={{action 'changeTag'}}
+        @selectedOrder={{this.selectedOrder}}
+        @availableOrders={{this.availableOrders}}
+        @onOrderChange={{action 'changeOrder'}}
+      />
+
+      <LinkTo
+        @route='editor.new'
+        @model='post'
+        class='gh-btn gh-btn-primary view-actions-top-row'
+        data-test-new-post-button={{true}}
+      ><span>{{t 'Manual.Posts.New_post'}}</span></LinkTo>
+    </section>
+  </GhCanvasHeader>
+
+  <section class='view-container content-list'>
+    <ol class='posts-list gh-list {{unless this.postsInfinityModel "no-posts"}}'>
+      {{#if this.postsInfinityModel}}
+        <li class='gh-list-row header'>
+          <div class='gh-list-header gh-posts-title-header'>{{t 'Manual.Posts.Title'}}</div>
+          {{#if
+            (and
+              (not-eq this.settings.membersSignupAccess 'none')
+              (not-eq this.settings.editorDefaultEmailRecipients 'disabled')
+              (not this.session.user.isContributor)
+              this.feature.emailAnalytics
+            )
+          }}
+            <div class='gh-list-header gh-posts-sends-header'>{{t 'Manual.Posts.Sends'}}</div>
+            <div class='gh-list-header gh-posts-opens-header'>{{t 'Manual.Posts.Opens'}}</div>
+          {{/if}}
+          <div class='gh-list-header gh-posts-status-header'>{{t 'Manual.Posts.Status'}}</div>
+        </li>
+      {{/if}}
+
+      {{#each this.postsInfinityModel as |post|}}
+        <GhPostsListItem @post={{post}} data-test-post-id={{post.id}} />
+      {{else}}
+        <li class='no-posts-box'>
+          <div class='no-posts'>
+            {{#if this.showingAll}}
+              {{svg-jar 'posts-placeholder' class='gh-posts-placeholder'}}
+              <h4>{{t 'Manual.Posts.Start_creating_content'}}</h4>
+              <LinkTo @route='editor.new' @model='post' class='gh-btn gh-btn-green'>
+                <span>{{t 'Manual.Posts.Write_a_new_post'}}</span>
+              </LinkTo>
+            {{else}}
+              <h4>{{t 'Manual.Posts.No_posts_match_the_current_filter'}}</h4>
+              <LinkTo @route='posts' @query={{hash type=null author=null tag=null}} class='gh-btn'>
+                <span>{{t 'Manual.Posts.Show_all_posts'}}</span>
+              </LinkTo>
+            {{/if}}
+          </div>
+        </li>
+      {{/each}}
+    </ol>
+
+    <GhInfinityLoader
+      @infinityModel={{this.postsInfinityModel}}
+      @scrollable='.gh-main'
+      @triggerOffset={{1000}}
+    />
+  </section>
+
+  {{outlet}}
+</section>

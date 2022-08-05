@@ -3,6 +3,7 @@ on:
   pull_request:
   push:
     branches:
+<<<<<<< HEAD
       - main
       - '5.0'
       - 'v5.*'
@@ -29,12 +30,34 @@ jobs:
           cache: yarn
       - run: yarn
       - run: yarn lint
+=======
+      - "v4.*"
+      - "5.0"
+      - "multiple-newsletters"
+      - main
+      - "renovate/*"
+jobs:
+  prod-build:
+    runs-on: ubuntu-18.04
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/'))
+    name: Production Build
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14.17.0"
+
+      - run: yarn
+      - run: grunt shell:ember:prod
+
+>>>>>>> admin/main
       - uses: daniellockyer/action-slack-build@master
         if: failure() && github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           status: ${{ job.status }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+<<<<<<< HEAD
 
   migrations:
     runs-on: ubuntu-18.04
@@ -129,6 +152,21 @@ jobs:
       - run: yarn test
 
       - uses: codecov/codecov-action@v2
+=======
+  lint:
+    runs-on: ubuntu-18.04
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/'))
+    name: Lint
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14.17.0"
+
+      - run: yarn
+      - run: yarn lint:js
+      - run: yarn lint:hbs
+>>>>>>> admin/main
 
       - uses: daniellockyer/action-slack-build@master
         if: failure() && github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -136,6 +174,7 @@ jobs:
           status: ${{ job.status }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+<<<<<<< HEAD
 
   database-tests:
     runs-on: ubuntu-18.04
@@ -291,6 +330,34 @@ jobs:
         if: failure()
         run: |
           [ -f ~/.ghost/logs/*.log ] && cat ~/.ghost/logs/*.log
+=======
+  test:
+    runs-on: ubuntu-18.04
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/'))
+    strategy:
+      matrix:
+        browser: ["Firefox", "Chrome"]
+    name: ${{ matrix.browser }}
+    env:
+      MOZ_HEADLESS: 1
+      JOBS: 1
+      CI: true
+      COVERAGE: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14.17.0"
+
+      - run: yarn
+      - run: yarn test
+        env:
+          BROWSER: ${{ matrix.browser }}
+
+      # Merge coverage reports and upload
+      - run: yarn ember coverage-merge
+      - uses: codecov/codecov-action@v3
+>>>>>>> admin/main
 
       - uses: daniellockyer/action-slack-build@master
         if: failure() && github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -301,7 +368,11 @@ jobs:
 
   canary:
     runs-on: ubuntu-18.04
+<<<<<<< HEAD
     needs: [lint, migrations, unit-tests, database-tests]
+=======
+    needs: [lint, test, prod-build]
+>>>>>>> admin/main
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     name: Canary
     steps:
@@ -309,4 +380,9 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Canary Build
+<<<<<<< HEAD
           token: ${{ secrets.RELEASE_TOKEN }}
+=======
+          repo: TryGhost/Ghost
+          token: ${{ secrets.WORKFLOW_TOKEN }}
+>>>>>>> admin/main

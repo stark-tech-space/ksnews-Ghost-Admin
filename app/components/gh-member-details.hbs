@@ -1,0 +1,118 @@
+<section class='gh-member-details' ...attributes>
+  <div class='flex flex-column mt4'>
+    <div class='gh-member-details-identity'>
+      {{#if (or @member.name @member.email)}}
+        <GhMemberAvatar
+          @member={{@member}}
+          @sizeClass={{if
+            @member.name
+            'f-subheadline fw4 lh-zero tracked-1'
+            'f-subheadline fw4 lh-zero tracked-1'
+          }}
+          @containerClass='w20 h20 mr4 gh-member-detail-avatar'
+        />
+      {{else}}
+        <div class='flex items-center justify-center br-100 mr4 gh-new-member-avatar'>
+          <span class='gh-member-avatar-label f-subheadline fw5 lh-zero tracked-1'>N</span>
+        </div>
+      {{/if}}
+      <div>
+        <h3>
+          {{or @member.name @member.email}}
+          {{#unless (or @member.name @member.email)}}
+            {{#if @member.isNew}}
+              <span class='midgrey'>{{t 'Manual.Members.New_member'}}</span>
+            {{/if}}
+          {{/unless}}
+        </h3>
+        <p>
+          {{#if (and @member.name @member.email)}}
+            <a href='mailto:{{@member.email}}'>{{@member.email}}</a>
+          {{/if}}
+        </p>
+      </div>
+    </div>
+    {{#unless @member.isNew}}
+      <div class='gh-member-details-meta'>
+        <p>
+          {{svg-jar 'pin'}}
+          {{#if @member.geolocation}}
+            {{#if (and (eq @member.geolocation.country_code 'US') @member.geolocation.region)}}
+              {{@member.geolocation.region}}, US
+            {{else}}
+              {{or @member.geolocation.country 'Unknown location'}}
+            {{/if}}
+          {{else}}
+            {{t 'Manual.Members.Unknown_location'}}
+          {{/if}}
+        </p>
+        <p>
+          {{svg-jar 'member-add'}}
+          {{t 'Manual.Members.Created_on_'}}{{moment-format
+            (moment-site-tz @member.createdAtUTC)
+            'D MMM YYYY'
+          }}
+        </p>
+        <p class='gh-member-last-seen'>
+          {{svg-jar 'eye'}}
+          {{#if (not (is-empty @member.lastSeenAtUTC))}}
+            {{t 'Manual.Members.Last_seen_on'}}
+            {{moment-format (moment-site-tz @member.lastSeenAtUTC) 'D MMM YYYY'}}
+          {{else}}
+            <span>{{t 'Manual.Members.Not_seen_yet'}}</span>
+          {{/if}}
+        </p>
+      </div>
+      {{#if
+        (and
+          (not-eq this.settings.membersSignupAccess 'none')
+          (not-eq this.settings.editorDefaultEmailRecipients 'disabled')
+        )
+      }}
+        <div class='gh-member-details-stats-container'>
+          <h4 class='gh-main-section-header small bn'>{{t 'Manual.Members.Engagement'}}</h4>
+          {{#if (eq @member.emailCount 0)}}
+            <div class='gh-members-no-stats'>
+              <p>
+                {{t "Manual.Members.We'll_show_"}}
+                {{#if @member.name}}
+                  {{first-name @member.name}}
+                {{else}}
+                  {{t 'Manual.Members.this_member'}}
+                {{/if}}{{t "Manual.Members.'s"}}{{t
+                  'Manual.Members._email_stats_here_once_they_receive_their_first_newsletter.'
+                }}
+              </p>
+            </div>
+          {{else}}
+            <div class='gh-member-details-stats'>
+              <div class='gh-member-details-stat'>
+                <p>{{t 'Manual.Members.Emails_received'}}</p>
+                <div class='gh-data-summary gh-cp-data-summary'>{{@member.emailCount}}</div>
+              </div>
+              <div class='gh-member-details-stat'>
+                <p>{{t 'Manual.Members.Emails_opened'}}</p>
+                <div class='gh-data-summary gh-cp-data-summary'>{{@member.emailOpenedCount}}</div>
+              </div>
+              <div class='gh-member-details-stat open-rate'>
+                <p>{{t 'Manual.Members.Average_open_rate'}}</p>
+                <div
+                  class='gh-data-summary gh-cp-data-summary
+                    {{if (is-empty @member.emailOpenRate) "gh-data-unavailable-label"}}'
+                >
+                  {{#if (is-empty @member.emailOpenRate)}}
+                    {{t
+                      'Manual.Members.This_metric_is_calculated_once_a_member_has_received_5_newsletters.'
+                    }}
+                  {{else}}
+                    {{@member.emailOpenRate}}<span>%</span>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/unless}}
+  </div>
+</section>

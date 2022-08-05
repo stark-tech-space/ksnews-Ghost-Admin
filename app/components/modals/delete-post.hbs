@@ -1,0 +1,32 @@
+<div class='modal-content' {{on-key 'Enter' (perform this.deletePostTask)}}>
+  <header class='modal-header'>
+    <h1>
+      {{t (concat 'Manual.Components.' this.messageTitle)}}?</h1>
+  </header>
+  <button
+    type='button'
+    class='close'
+    title={{t 'Manual.Components.Close'}}
+    {{on 'click' @close}}
+  >{{svg-jar 'close'}}<span class='hidden'>Close</span></button>
+
+  <div class='modal-body'>
+    <p>
+      {{t "Manual.Components.You're_about_to_delete"}}"<strong>{{@data.post.title}}</strong>"{{t
+        'Manual.Components.._This_is_permanent!_We_warned_you,_k?'
+      }}
+    </p>
+  </div>
+
+  <div class='modal-footer'>
+    <button type='button' class='gh-btn' {{on 'click' @close}}><span>{{t
+          'Manual.Components.Cancel'
+        }}</span></button>
+    <GhTaskButton
+      @buttonText={{t 'Manual.Components.Delete'}}
+      @successText={{t 'Manual.Components.Deleted'}}
+      @task={{this.deletePostTask}}
+      @class='gh-btn gh-btn-red gh-btn-icon'
+    />
+  </div>
+</div>

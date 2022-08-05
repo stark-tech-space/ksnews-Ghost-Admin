@@ -1,0 +1,39 @@
+<fieldset class='gh-publish-types'>
+  {{#each @publishOptions.publishTypeOptions as |option|}}
+    <span>
+      <input
+        type='radio'
+        name='publish-type'
+        id='publish-type-{{option.value}}'
+        class='gh-radio-button'
+        value={{option.value}}
+        checked={{eq option.value @publishOptions.selectedPublishTypeOption.value}}
+        disabled={{option.disabled}}
+        {{on 'change' this.onChange}}
+        data-test-publish-type={{option.value}}
+      />
+      <label for='publish-type-{{option.value}}'>{{t (concat 'Manual.Posts.' option.label)}}</label>
+    </span>
+  {{/each}}
+</fieldset>
+
+{{#if @publishOptions.emailDisabledError}}
+  <p class='gh-box gh-content-box' data-test-publish-type-error='email-disabled'>
+    {{@publishOptions.emailDisabledError}}
+  </p>
+{{else if (eq @publishOptions.totalMemberCount 0)}}
+  <p class='gh-box gh-content-box' data-test-publish-type-error='no-members'>
+    <LinkTo @route='members'>{{t 'Manual.Posts.Add_members'}}</LinkTo>
+    {{t 'Manual.Posts.to_start_sending_newsletters!'}}
+  </p>
+{{else if (not @publishOptions.mailgunIsConfigured)}}
+  <p class='gh-box gh-content-box' data-test-publish-type-error='no-mailgun'>
+    {{t 'Manual.Posts.Set_up_'}}
+    <a
+      href='https://ghost.org/docs/newsletters/#bulk-email-configuration'
+      target='_blank'
+      rel='noreferrer noopener'
+    >Mailgun</a>
+    {{t 'Manual.Posts.to_start_sending_newsletters!'}}
+  </p>
+{{/if}}

@@ -1,105 +1,68 @@
-&nbsp;
-<p align="center">
-  <a href="https://ghost.org/#gh-light-mode-only" target="_blank">
-    <img src="https://user-images.githubusercontent.com/65487235/157884383-1b75feb1-45d8-4430-b636-3f7e06577347.png" alt="Ghost" width="200px">
-  </a>
-  <a href="https://ghost.org/#gh-dark-mode-only" target="_blank">
-    <img src="https://user-images.githubusercontent.com/65487235/157849205-aa24152c-4610-4d7d-b752-3a8c4f9319e6.png" alt="Ghost" width="200px">
-  </a>
-</p>
-&nbsp;
+# Ghost-Admin
 
-<p align="center">
-    <a href="https://ghost.org/">Ghost.org</a> •
-    <a href="https://forum.ghost.org">Forum</a> •
-    <a href="https://ghost.org/docs/">Docs</a> •
-    <a href="https://github.com/TryGhost/Ghost/blob/master/.github/CONTRIBUTING.md">Contributing</a> •
-    <a href="https://twitter.com/ghost">Twitter</a>
-    <br /><br />
-    <a href="https://ghost.org/">
-        <img src="https://img.shields.io/badge/downloads-2M-brightgreen.svg" alt="Downloads" />
-    </a>
-    <a href="https://github.com/TryGhost/Ghost/releases/">
-        <img src="https://img.shields.io/github/release/TryGhost/Ghost.svg" alt="Latest release" />
-    </a>
-    <a href="https://github.com/TryGhost/Ghost/actions">
-        <img src="https://github.com/TryGhost/Ghost/workflows/Test%20Suite/badge.svg?branch=main" alt="Build status" />
-    </a>
-    <a href="https://github.com/TryGhost/Ghost/contributors/">
-        <img src="https://img.shields.io/github/contributors/TryGhost/Ghost.svg" alt="Contributors" />
-    </a>
-</p>
-<p align="center">
-  Love open source? <a href="https://careers.ghost.org/product-engineer-node-js/">We're hiring</a> Node.js engineers to work on Ghost full-time.
-</p>
+![](https://github.com/TryGhost/Admin/workflows/Test%20Suite/badge.svg?branch=main)
 
-&nbsp;
+This is the home of Ember.js based admin app that ships with [Ghost](https://github.com/tryghost/ghost).
 
-<a href="https://ghost.org/"><img src="https://user-images.githubusercontent.com/353959/169805900-66be5b89-0859-4816-8da9-528ed7534704.png" alt="Fiercely independent, professional publishing. Ghost is the most popular open source, headless Node.js CMS which already works with all the tools you know and love." /></a>
+**Do you want to set up a Ghost blog?** Check the [getting started guide](https://ghost.org/docs/introduction/)
 
-&nbsp;
+**Do you want to modify or contribute to Ghost-Admin?** Please read how to [install from source](https://ghost.org/docs/install/source/) and swing by our [forum](https://forum.ghost.org) if you need any help 😄
 
-<a href="https://ghost.org/pricing/#gh-light-mode-only" target="_blank"><img src="https://user-images.githubusercontent.com/65487235/157849437-9b8fcc48-1920-4b26-a1e8-5806db0e6bb9.png" alt="Ghost(Pro)" width="165px" /></a>
-<a href="https://ghost.org/pricing/#gh-dark-mode-only" target="_blank"><img src="https://user-images.githubusercontent.com/65487235/157849438-79889b04-b7b6-4ba7-8de6-4c1e4b4e16a5.png" alt="Ghost(Pro)" width="165px" /></a>
+## Running tests
 
-The easiest way to get a production instance deployed is with our official **[Ghost(Pro)](https://ghost.org/pricing/)** managed service. It takes about 2 minutes to launch a new site with worldwide CDN, backups, security and maintenance all done for you.
+Build and run tests once:
 
-For most people this ends up being the best value option cause of [how much time it saves](https://ghost.org/docs/hosting/) — and 100% of revenue goes to the Ghost Foundation; funding the maintenance and further development of the project itself. So you’ll be supporting open source software *and* getting a great service!
-
-If you prefer to run on your own infrastructure, we also offer official 1-off installs and managed support and maintenance plans via **[Ghost(Valet)](https://valet.ghost.org)** - which can save a substantial amount of developer time and resources.
-
-&nbsp;
-
-# Quickstart install
-
-If you want to run your own instance of Ghost, in most cases the best way is to use our **CLI tool**
-
+```bash
+TZ=UTC yarn test
 ```
-npm install ghost-cli -g
+_Note the `TZ=UTC` environment variable which is currently required to get tests working if your system timezone doesn't match UTC._
+
+If you are serving the admin app (e.g., when running `yarn serve`, or when running `yarn dev` in the main Ghost project),  you can also run the tests in your browser by going to http://localhost:4200/tests. 
+
+This has the additional benefit that you can use `await this.pauseTest()` in your tests to temporarily pause tests (best to also add `this.timeout(0);` to avoid timeouts). This allows you to inspect the DOM in your browser to debug tests. You can resume tests by running `resumeTest()` in your browser console.
+
+[More information](https://guides.emberjs.com/v3.28.0/testing/testing-application/#toc_debugging-your-tests)
+
+
+### Writing tests
+
+When writing tests and not using the `http://localhost:4200/tests` browser tests, it can be easier to have a separate watching build that builds the project for the test environment (this drastically reduces the time you have to wait when running tests):
+
+```bash
+yarn build --environment=test -w -o="dist-test"
 ```
 
-&nbsp;
+After that, you can easily run tests locally:
 
-Then, if installing locally add the `local` flag to get up and running in under a minute - [Local install docs](https://ghost.org/docs/install/local/)
+Run all tests:
 
-```
-ghost install local
-```
-
-&nbsp;
-
-or on a server run the full install, including automatic SSL setup using LetsEncrypt - [Production install docs](https://ghost.org/docs/install/ubuntu/)
-
-```
-ghost install
+```bash
+TZ=UTC yarn test 1 --path="dist-test"
 ```
 
-&nbsp;
+To have a cleaner output:
 
-Check out our [official documentation](https://ghost.org/docs/) for more information about our [recommended hosting stack](https://ghost.org/docs/hosting/) & properly [upgrading Ghost](https://ghost.org/docs/update/), plus everything you need to develop your own Ghost [themes](https://ghost.org/docs/themes/) or work with [our API](https://ghost.org/docs/content-api/).
+```bash
+TZ=UTC yarn test 1 --reporter dot  --path="dist-test"
+```
 
-### Contributors & advanced developers
+This shows a dot (`.`) for every successful test, and `F` for every failed test. At the end, it will only show the output of the failed tests.
 
-For anyone wishing to contribute to Ghost or to hack/customize core files we recommend following our full development setup guides: [Contributor guide](https://ghost.org/docs/contributing/) • [Developer setup](https://ghost.org/docs/install/source/) • [Admin App dev guide](https://ghost.org/docs/install/source/#ghost-admin)
+To run a specific test file:
+```bash
+TZ=UTC yarn test 1 --reporter dot  --path="dist-test" -mp=tests/acceptance/settings/newsletters-test.js
+```
+_Hint: you can easily copy the path of a test in VSCode by right clicking on the test file and choosing `Copy Relative Path`._
 
-&nbsp;
+To have a full list of the available options, run
+```bash
+ember exam --help
+```
 
-# Ghost sponsors
+## Have a bug or issue?
 
-We'd like to extend big thanks to our sponsors and partners who make Ghost possible. If you're interested in sponsoring Ghost and supporting the project, please check out our profile on [GitHub sponsors](https://github.com/sponsors/TryGhost) :heart:
+Bugs and issues (even if they only affect the admin app) should be opened on the core [Ghost](https://github.com/tryghost/ghost/issues) repository.
 
-**[DigitalOcean](https://m.do.co/c/9ff29836d717)** • **[Fastly](https://www.fastly.com/)**
-
-&nbsp;
-
-# Getting help
-
-You can find answers to a huge variety of questions, along with a large community of helpful developers over on the [Ghost forum](https://forum.ghost.org/) - replies are generally very quick. **Ghost(Pro)** customers also have access to 24/7 email support.
-
-To stay up to date with all the latest news and product updates, make sure you [subscribe to our blog](https://ghost.org/blog/) — or you can always follow us [on Twitter](https://twitter.com/Ghost), if you prefer your updates bite-sized and facetious. :saxophone::turtle:
-
-&nbsp;
-
-# Copyright & license
+# Copyright & License
 
 Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE). Ghost and the Ghost Logo are trademarks of Ghost Foundation Ltd. Please see our [trademark policy](https://ghost.org/trademark/) for info on acceptable usage.

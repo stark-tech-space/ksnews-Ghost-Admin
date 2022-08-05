@@ -1,0 +1,20 @@
+<table class='gh-list'>
+  <thead>
+    <tr>
+      {{#unless @hideMemberColumn}}
+        <th>{{t 'Manual.Members.Member'}}</th>
+      {{/unless}}
+      <th>{{t 'Manual.Members.Event'}}</th>
+      <th>{{t 'Manual.Members.Time'}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @events as |event|}}
+      <MembersActivity::TableRow
+        @hideMemberColumn={{@hideMemberColumn}}
+        @event={{event}}
+        @hasMultipleNewsletters={{@hasMultipleNewsletters}}
+      />
+    {{/each}}
+  </tbody>
+</table>

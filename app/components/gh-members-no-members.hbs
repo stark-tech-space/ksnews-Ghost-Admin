@@ -1,0 +1,24 @@
+<div class='gh-members-empty'>
+  {{svg-jar 'members-placeholder' class='gh-members-placeholder'}}
+  <h4>{{t 'Manual.Members.Start_building_your_audience'}}</h4>
+  {{#if (not-eq this.settings.membersSignupAccess 'none')}}
+    <p>{{t
+        'Manual.Members.Use_memberships_to_allow_your_readers_to_sign_up_and_subscribe_to_your_content.'
+      }}</p>
+    <button class='gh-btn gh-btn-green' type='button' {{on 'click' this.addYourself}}>
+      <span>{{t 'Manual.Members.Add_yourself_as_a_member_to_test'}}</span>
+    </button>
+    <p class='gh-members-empty-secondary-cta'>{{t 'Manual.Members.Have_members_already?'}}<LinkTo
+        @route='member.new'
+      >{{t 'Manual.Members.Add_them_manually_'}}</LinkTo>{{t 'Manual.Members.or'}}<LinkTo
+        @route='members.import'
+      >{{t 'Manual.Members._import_from_CSV'}}</LinkTo></p>
+  {{else}}
+    <p>{{t
+        'Manual.Members.Memberships_have_been_disabled._Adjust_your_Subscription_Access_settings_to_start_adding_members.'
+      }}</p>
+    <LinkTo @route='settings.membership' class='gh-btn gh-btn-green'>
+      <span>{{t 'Manual.Members.Membership_settings'}}</span>
+    </LinkTo>
+  {{/if}}
+</div>
