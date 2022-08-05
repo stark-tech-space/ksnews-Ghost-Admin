@@ -82,28 +82,49 @@
         {{else}}
           <p data-test-state='installed-no-notes'>
             <strong>{{this.themeName}}</strong>
+<<<<<<< HEAD
             {{t 'Manual.Components._uploaded_successfully.'}}
-            {{#if this.canActivateTheme}}{{t 'Manual.Components._uploaded_successfully.'}}{{/if}}
+            {{#if this.canActivateTheme}}{{t 'Manual.Components.Do_you_want_to_activate_it_now?'}}{{/if}}
+=======
+            uploaded successfully.
+            {{#if this.canActivateTheme}}Do you want to activate it now?{{/if}}
+>>>>>>> origin/main
           </p>
         {{/if}}
       {{else if this.displayOverwriteWarning}}
         <p data-test-state='overwrite'>
+<<<<<<< HEAD
           {{t 'Manual.Components.The_theme_.'}}
           <strong>"{{this.fileThemeName}}"</strong>
           {{t 'Manual.Components.already_exists._Do_you_want_to_overwrite_it?'}}
+=======
+          The theme
+          <strong>"{{this.fileThemeName}}"</strong>
+          already exists. Do you want to overwrite it?
+>>>>>>> origin/main
         </p>
       {{else if (or this.validationErrors this.fatalValidationErrors)}}
 
         <p data-test-state='invalid'>
+<<<<<<< HEAD
           {{t
             'Manual.Components.already_exists.This_theme_is_invalid_and_cannot_be_activated._Fix_the_following_errors_and_re-upload_the_theme.'
           }}
+=======
+          This theme is invalid and cannot be activated. Fix the following errors and re-upload the
+          theme.
+>>>>>>> origin/main
         </p>
 
         {{#if this.fatalValidationErrors}}
           <div>
+<<<<<<< HEAD
             <h2 class='mb0 mt4 f5 fw6'>{{t 'Manual.Components.Fatal_Errors'}}</h2>
             <p class='mb2'>{{t 'Manual.Components.Must-fix_to_activate_theme'}}</p>
+=======
+            <h2 class='mb0 mt4 f5 fw6'>Fatal Errors</h2>
+            <p class='mb2'>Must-fix to activate theme</p>
+>>>>>>> origin/main
           </div>
 
           <ul class='pa0'>
@@ -117,10 +138,17 @@
 
         {{#if this.validationErrors}}
           <div>
+<<<<<<< HEAD
             <h2 class='mb0 mt4 f5 fw6'>{{t 'Manual.Components.Errors'}}</h2>
             <p class='mb2'>{{t 'Manual.Components.Highly_recommended_to_fix,_functionality_'}}
               <strong>{{t 'Manual.Components.could'}}</strong>
               {{t 'Manual.Components._be_restricted'}}</p>
+=======
+            <h2 class='mb0 mt4 f5 fw6'>Errors</h2>
+            <p class='mb2'>Highly recommended to fix, functionality
+              <strong>could</strong>
+              be restricted</p>
+>>>>>>> origin/main
           </div>
           <ul class='pa0'>
             {{#each this.validationErrors as |error|}}
@@ -179,7 +207,11 @@
             class='gh-btn gh-btn-red'
             data-test-button='overwrite'
           >
+<<<<<<< HEAD
             <span>{{t 'Manual.Components.Overwrite'}}</span>
+=======
+            <span>Overwrite</span>
+>>>>>>> origin/main
           </button>
         {{/if}}
         {{#if this.canActivateTheme}}
@@ -189,9 +221,13 @@
             class='gh-btn gh-btn-primary'
             data-test-button='activate'
           >
+<<<<<<< HEAD
             <span>{{t 'Manual.Components.Activate'}}{{#if this.validationErrors}}{{t
                   'Manual.Components.with_errors'
                 }}{{/if}}</span>
+=======
+            <span>Activate{{#if this.validationErrors}} with errors{{/if}}</span>
+>>>>>>> origin/main
           </button>
         {{/if}}
         {{#if (or this.validationErrors this.fatalValidationErrors)}}
