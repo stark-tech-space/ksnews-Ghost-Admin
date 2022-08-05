@@ -5,6 +5,7 @@ import {inject as service} from '@ember/service';
 export default AdminRoute.extend({
     config: service(),
     settings: service(),
+    intl: service(),
 
     model() {
         return RSVP.hash({

@@ -1,112 +1,143 @@
-<div class="flex flex-column h-100 items-center overflow-auto" data-test-modal="update-flow">
-    <header class="gh-publish-header">
-        <button class="gh-btn-editor gh-publish-back-button" title="Close" type="button" {{on "click" @close}}>
-            <span>{{svg-jar "arrow-left"}} Editor</span>
-        </button>
-        <div class="flex">
-            {{#let @data.publishOptions.post as |post|}}
-                {{#if (not (and post.isSent (not post.isPublished)))}}
-                    <button class="gh-btn gh-btn-editor darkgrey gh-publish-trigger active" title="Close" type="button" {{on "click" @close}}>
-                        <span>{{if post.isScheduled "Unschedule" "Unpublish"}}</span>
-                    </button>
-                {{/if}}
-            {{/let}}
-            <div class="settings-menu-toggle-spacer"></div>
-        </div>
-    </header>
+<div class='flex flex-column h-100 items-center overflow-auto' data-test-modal='update-flow'>
+  <header class='gh-publish-header'>
+    <button
+      class='gh-btn-editor gh-publish-back-button'
+      title='Close'
+      type='button'
+      {{on 'click' @close}}
+    >
+      <span>{{svg-jar 'arrow-left'}} {{t 'Manual.Posts.Editor'}}</span>
+    </button>
+    <div class='flex'>
+      {{#let @data.publishOptions.post as |post|}}
+        {{#if (not (and post.isSent (not post.isPublished)))}}
+          <button
+            class='gh-btn gh-btn-editor darkgrey gh-publish-trigger active'
+            title='Close'
+            type='button'
+            {{on 'click' @close}}
+          >
+            <span>{{if
+                post.isScheduled
+                (t 'Manual.Components.Unschedule')
+                (t 'Manual.Components.Unpublish')
+              }}</span>
+          </button>
+        {{/if}}
+      {{/let}}
+      <div class='settings-menu-toggle-spacer'></div>
+    </div>
+  </header>
 
-    {{#let @data.publishOptions.post as |post|}}
-        <div class="gh-publish-settings-container gh-update-flow fade-in">
-            <div class="gh-publish-title" data-test-update-flow-title>
-                {{#if (and post.isSent (not post.isPublished))}}
-                    This {{post.displayName}} was
-                    <span class="green">{{post.status}} by email</span>
-                {{else}}
-                    This {{post.displayName}} has been
-                    <span class="green">{{post.status}}</span>
-                {{/if}}
-            </div>
+  {{#let @data.publishOptions.post as |post|}}
+    <div class='gh-publish-settings-container gh-update-flow fade-in'>
+      <div class='gh-publish-title' data-test-update-flow-title>
+        {{#if (and post.isSent (not post.isPublished))}}
+          {{t 'Manual.Posts.This_'}}
+          {{t (concat 'Manual.Posts.' post.displayName)}}
+          {{t 'Manual.Posts.was_'}}
+          <span class='green'>{{t (concat 'Manual.Posts.' post.status)}}{{t
+              'Manual.Posts._by_email_'
+            }}</span>
+        {{else}}
+          {{t 'Manual.Posts.This_'}}
+          {{t (concat 'Manual.Posts.' post.displayName)}}
+          {{t 'Manual.Posts._has_been_'}}
+          <span class='green'>{{t (concat 'Manual.Posts.' post.status)}}</span>
+        {{/if}}
+      </div>
 
-            <div class="gh-publish-confirmation" data-test-update-flow-confirmation>
-                <p>
-                    Your
-                    {{post.displayName}}
+      <div class='gh-publish-confirmation' data-test-update-flow-confirmation>
+        <p>
+          {{t 'Manual.Posts.Your_'}}{{t (concat 'Manual.Posts.' post.displayName)}}{{if
+            post.isScheduled
+            (t 'Manual.Posts.will_be')
+            (t 'Manual.Posts.was')
+          }}
 
-                    {{if post.isScheduled "will be" "was"}}
+          {{#if (or post.isSent (and post.isPublished post.email) post.willEmail)}}
+            {{#if post.emailOnly}}
+              {{t 'Manual.Posts.sent_to_'}}
+            {{else}}
+              {{t 'Manual.Posts._published_and_sent_to_'}}
+            {{/if}}
 
-                    {{#if
-                        (or post.isSent
-                            (and post.isPublished post.email)
-                            post.willEmail
-                        )
-                    }}
-                        {{#if post.emailOnly}}
-                            sent to
-                        {{else}}
-                            published and sent to
-                        {{/if}}
+            {{#if post.isScheduled}}
+              {{#let
+                (members-count-fetcher query=(hash filter=post.fullRecipientFilter))
+                as |countFetcher|
+              }}
+                <strong>{{t
+                    (concat
+                      'Manual.Posts.'
+                      (gh-pluralize countFetcher.count 'subscriber' without-count=true)
+                    )
+                  }}</strong>
+                {{#if this.showNewsletterName}}{{t 'Manual.Posts.of_'}}<strong
+                  >{{post.newsletter.name}}</strong>{{/if}}
+              {{/let}}
+            {{else}}
+              <strong>{{gh-pluralize post.email.emailCount 'subscriber'}}</strong>
+              {{#if this.showNewsletterName}}of <strong>{{post.newsletter.name}}</strong>{{/if}}
+            {{/if}}
+          {{else}}
+            {{t 'Manual.Posts.__published_on_your_site_'}}
+          {{/if}}
 
-                        {{#if post.isScheduled}}
-                            {{#let (members-count-fetcher query=(hash filter=post.fullRecipientFilter)) as |countFetcher|}}
-                                <strong>{{gh-pluralize countFetcher.count "subscriber"}}</strong>
-                                {{#if this.showNewsletterName}}of <strong>{{post.newsletter.name}}</strong>{{/if}}
-                            {{/let}}
-                        {{else}}
-                            <strong>{{gh-pluralize post.email.emailCount "subscriber"}}</strong>
-                            {{#if this.showNewsletterName}}of <strong>{{post.newsletter.name}}</strong>{{/if}}
-                        {{/if}}
-                    {{else}}
-                        published on your site
-                    {{/if}}
+          {{#let (moment-site-tz post.publishedAtUTC) as |publishedAt|}}
+            {{t 'Manual.Posts.on_'}}
+            {{moment-format publishedAt 'D MMM YYYY'}}
+            {{t 'Manual.Posts.at_'}}
+            {{moment-format publishedAt 'HH:mm'}}.
+          {{/let}}
 
-                    {{#let (moment-site-tz post.publishedAtUTC) as |publishedAt|}}
-                        on
-                        {{moment-format publishedAt "D MMM YYYY"}}
-                        at
-                        {{moment-format publishedAt "HH:mm"}}.
-                    {{/let}}
+          {{#if post.isScheduled}}
+            {{#if (and post.isScheduled post.email)}}
+              {{t 'Manual.Posts.This_post_was_previously_emailed_to'}}
 
-                    {{#if post.isScheduled}}
-                        {{#if (and post.isScheduled post.email)}}
-                            This post was previously emailed to
+              <strong>{{t
+                  (concat
+                    'Manual.Posts.'
+                    (gh-pluralize countFetcher.count 'subscriber' without-count=true)
+                  )
+                }}</strong>
 
-                            <strong>{{pluralize post.email.emailCount "subscriber"}}</strong>
+              {{#if this.showNewsletterName}}
+                of
+                <strong>{{post.newsletter.name}}</strong>
+              {{/if}}
 
-                            {{#if this.showNewsletterName}}
-                                of <strong>{{post.newsletter.name}}</strong>
-                            {{/if}}
+              {{#let (moment-site-tz post.email.createdAtUTC) as |sentAt|}}
+                {{t 'Manual.Posts.on_'}}
+                {{moment-format sentAt 'D MMM YYYY'}}
+                {{t 'Manual.Posts.at_'}}
+                {{moment-format sentAt 'HH:mm'}}.
+              {{/let}}
+            {{/if}}
 
-                            {{#let (moment-site-tz post.email.createdAtUTC) as |sentAt|}}
-                                on
-                                {{moment-format sentAt "D MMM YYYY"}}
-                                at
-                                {{moment-format sentAt "HH:mm"}}.
-                            {{/let}}
-                        {{/if}}
-
-                        <br><br>
-                        Need to make a change?
-                        <button
-                            type="button"
-                            class="gh-revert-to-draft"
-                            {{on "click" (fn @close (hash afterTask="revertToDraftTask"))}}
-                            data-test-button="revert-to-draft"
-                        >
-                            <span>Unschedule and revert to draft &rarr;</span>
-                        </button>
-                    {{else if (not post.emailOnly)}}
-                        <br><br>
-                        <button
-                            type="button"
-                            class="gh-revert-to-draft"
-                            {{on "click" (fn @close (hash afterTask="revertToDraftTask"))}}
-                            data-test-button="revert-to-draft"
-                        >
-                            <span>Unpublish and revert to private draft &rarr;</span>
-                        </button>
-                    {{/if}}
-                </p>
-            </div>
-        </div>
-    {{/let}}
+            <br /><br />
+            {{t 'Manual.Posts.Need_to_make_a_change?'}}
+            <button
+              type='button'
+              class='gh-revert-to-draft'
+              {{on 'click' (fn @close (hash afterTask='revertToDraftTask'))}}
+              data-test-button='revert-to-draft'
+            >
+              <span>{{t 'Manual.Posts.Unschedule_and_revert_to_draft'}} &rarr;</span>
+            </button>
+          {{else if (not post.emailOnly)}}
+            <br /><br />
+            <button
+              type='button'
+              class='gh-revert-to-draft'
+              {{on 'click' (fn @close (hash afterTask='revertToDraftTask'))}}
+              data-test-button='revert-to-draft'
+            >
+              <span>{{t 'Manual.Posts.Unpublish_and_revert_to_private_draft'}} &rarr;</span>
+            </button>
+          {{/if}}
+        </p>
+      </div>
+    </div>
+  {{/let}}
 </div>

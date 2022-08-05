@@ -119,7 +119,7 @@ export default class GhKoenigEditorReactComponent extends Component {
     _setupEditor(koenig) {
         let component = this;
 
-        this.koenigEditor = koenig;
+        this.koenigEditor = koenig.editor;
 
         // focus the title when pressing SHIFT+TAB
         this.koenigEditor.registerKeyCommand({

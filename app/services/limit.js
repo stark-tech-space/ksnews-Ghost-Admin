@@ -49,7 +49,7 @@ export default class LimitsService extends Service {
             helpLink = 'https://ghost.org/help/';
         }
 
-        this.limiter.loadLimits({
+        return this.limiter.loadLimits({
             limits: this.decorateWithCountQueries(limits),
             helpLink,
             errors: {

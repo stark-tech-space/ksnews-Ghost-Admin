@@ -1,19 +1,38 @@
-<div class="modal-content" data-test-modal="unsaved-settings">
-    <header class="modal-header">
-        <h1>Are you sure you want to leave this page?</h1>
-    </header>
-    <button type="button" class="close" role="button" title="Close" {{on "click" (fn @close false)}} data-test-button="close">{{svg-jar "close"}}<span class="hidden">Close</span></button>
+<div class='modal-content' data-test-modal='unsaved-settings'>
+  <header class='modal-header'>
+    <h1>{{t 'Manual.Components.Are_you_sure_you_want_to_leave_this_page?'}}</h1>
+  </header>
+  <button
+    type='button'
+    class='close'
+    role='button'
+    title='Close'
+    {{on 'click' (fn @close false)}}
+    data-test-button='close'
+  >{{svg-jar 'close'}}<span class='hidden'>Close</span></button>
 
-    <div class="modal-body">
-        <p>
-            Hey there! It looks like you didn't save the changes you made.
-        </p>
+  <div class='modal-body'>
+    <p>
+      {{t
+        "Manual.Components.Hey_there!_It_looks_like_you're_in_the_middle_of_writing_something_and_you_haven't_saved_all_of_your_content."
+      }}
+    </p>
 
-        <p>Save before you go!</p>
-    </div>
+    <p>{{t 'Manual.Components.Save_before_you_go!'}}</p>
+  </div>
 
-    <div class="modal-footer">
-        <button class="gh-btn" data-test-stay-button type="button" {{on "click" (fn @close false)}}><span>Stay</span></button>
-        <button class="gh-btn gh-btn-red" data-test-leave-button type="button" {{on "click" (fn @close true)}}><span>Leave</span></button>
-    </div>
+  <div class='modal-footer'>
+    <button
+      class='gh-btn'
+      data-test-stay-button
+      type='button'
+      {{on 'click' (fn @close false)}}
+    ><span>{{t 'Manual.Components.Stay'}}</span></button>
+    <button
+      class='gh-btn gh-btn-red'
+      data-test-leave-button
+      type='button'
+      {{on 'click' (fn @close true)}}
+    ><span>{{t 'Manual.Components.Leave'}}</span></button>
+  </div>
 </div>

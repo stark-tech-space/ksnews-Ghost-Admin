@@ -43,8 +43,7 @@ export default class SignupRoute extends UnauthenticatedRoute {
             if (!re.test(params.token)) {
                 this.notifications.showAlert('Invalid token.', {type: 'error', delayed: true, key: 'signup.create.invalid-token'});
 
-                resolve(this.transitionTo('signin'));
-                return;
+                return resolve(this.transitionTo('signin'));
             }
 
             tokenText = atob(params.token);
@@ -58,7 +57,7 @@ export default class SignupRoute extends UnauthenticatedRoute {
 
             let authUrl = this.ghostPaths.url.api('authentication', 'invitation');
 
-            this.ajax.request(authUrl, {
+            return this.ajax.request(authUrl, {
                 dataType: 'json',
                 data: {
                     email
@@ -67,8 +66,7 @@ export default class SignupRoute extends UnauthenticatedRoute {
                 if (response && response.invitation && response.invitation[0].valid === false) {
                     this.notifications.showAlert('The invitation does not exist or is no longer valid.', {type: 'warn', delayed: true, key: 'signup.create.invalid-invitation'});
 
-                    resolve(this.transitionTo('signin'));
-                    return;
+                    return resolve(this.transitionTo('signin'));
                 }
 
                 // set blogTitle, so password validation has access to it

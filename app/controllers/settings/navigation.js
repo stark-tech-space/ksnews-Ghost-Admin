@@ -167,11 +167,11 @@ export default class NavigationController extends Controller {
             validationPromises.pushObject(this.send('addNavItem', this.newSecondaryNavItem));
         }
 
-        navItems.forEach((item) => {
+        navItems.map((item) => {
             validationPromises.pushObject(item.validate());
         });
 
-        secondaryNavItems.forEach((item) => {
+        secondaryNavItems.map((item) => {
             validationPromises.pushObject(item.validate());
         });
 

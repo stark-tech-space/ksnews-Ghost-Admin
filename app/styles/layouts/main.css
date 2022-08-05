@@ -284,8 +284,6 @@
 }
 
 .gh-user-name {
-    display: inline-block;
-    width: 188px;
     margin: 1px 0 0;
     padding: 0;
     word-break: break-all;
@@ -293,14 +291,13 @@
     letter-spacing: 0;
     font-weight: 600;
     line-height: 1.2em;
+    max-width: 160px;
     text-overflow: ellipsis;
-    overflow: hidden;
+    overflow-x: hidden;
     white-space: nowrap;
 }
 
 .gh-user-email {
-    display: inline-block;
-    width: 188px;
     margin: 4px 0 0;
     padding: 0;
     word-break: break-all;
@@ -308,8 +305,9 @@
     font-weight: 400;
     line-height: 1.2em;
     color: var(--middarkgrey);
+    max-width: 160px;
     text-overflow: ellipsis;
-    overflow: hidden;
+    overflow-x: hidden;
     white-space: nowrap;
 }
 
@@ -1329,7 +1327,6 @@
 .gh-expandable {
     background: var(--main-color-content-greybg);
     border-radius: 3px;
-    overflow-x: hidden;
 }
 
 .gh-expandable-block {

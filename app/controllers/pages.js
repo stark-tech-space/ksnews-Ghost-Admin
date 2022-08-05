@@ -1,6 +1,7 @@
 import PostsController from './posts';
 import classic from 'ember-classic-decorator';
 import {action} from '@ember/object';
+import {inject as service} from '@ember/service';
 
 const TYPES = [{
     name: 'All pages',
@@ -33,10 +34,17 @@ const ORDERS = [{
 /* eslint-disable ghost/ember/alias-model-in-controller */
 @classic
 export default class PagesController extends PostsController {
+    @service intl;
+
     init() {
         super.init(...arguments);
-        this.availableTypes = TYPES;
-        this.availableOrders = ORDERS;
+
+        this.availableTypes = TYPES.map(item => ({...item,
+            name: this.intl.t(`Manual.JS.${item.name}`)}));
+        this.availableOrders = ORDERS.map(item => ({
+            ...item,
+            name: this.intl.t(`Manual.JS.${item.name}`)
+        }));
     }
 
     @action
