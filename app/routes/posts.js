@@ -148,8 +148,6 @@ export default class PostsRoute extends AuthenticatedRoute {
             if (!isBlank(value)) {
                 return `${key}:${filter[key]}`;
             }
-
-            return undefined;
         }).compact().join('+');
     }
 }

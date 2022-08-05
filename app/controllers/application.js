@@ -15,6 +15,7 @@ export default class ApplicationController extends Controller {
     @service session;
     @service settings;
     @service ui;
+    @service intl;
 
     @reads('config.hostSettings.billing.enabled')
         showBilling;

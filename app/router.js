@@ -7,7 +7,6 @@ const Router = EmberRouter.extend({
     rootURL: ghostPaths().adminRoot // admin interface lives under sub-directory /ghost
 });
 
-// eslint-disable-next-line array-callback-return
 Router.map(function () {
     this.route('home', {path: '/'});
 
@@ -69,8 +68,6 @@ Router.map(function () {
     this.route('settings.staff', {path: '/settings/staff'}, function () {
         this.route('user', {path: ':user_slug'});
     });
-
-    this.route('explore');
 
     this.route('settings.integrations', {path: '/settings/integrations'}, function () {
         this.route('new');

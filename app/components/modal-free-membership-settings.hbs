@@ -56,9 +56,9 @@
         {{!-- disable mouseDown so it doesn't trigger focus-out validations --}}
         {{!-- {{action (optional this.noop) on="mouseDown"}} --}}
     >
-        <span>Cancel</span>
+        <span>{{t "Manual.Settings.Cancel"}}</span>
     </button>
-    <GhTaskButton @buttonText="Save"
+    <GhTaskButton @buttonText="{{t "Manual.Settings.Save"}}"
         {{!-- @successText={{this.successText}} --}}
         @task={{this.save}}
         @class="gh-btn gh-btn-black gh-btn-icon"

@@ -54,6 +54,7 @@ export default class PostsController extends Controller {
     @service store;
     @service settings;
     @service config;
+    @service intl;
 
     // default values for these are set in `init` and defined in `helpers/reset-query-params`
     queryParams = ['type', 'access', 'author', 'tag', 'order'];
@@ -67,14 +68,27 @@ export default class PostsController extends Controller {
 
     init() {
         super.init(...arguments);
-        this.availableTypes = TYPES;
-        this.availableOrders = ORDERS;
-        this.availableVisibilities = VISIBILITIES;
+
+        this.availableTypes = TYPES.map((item) => {
+            return {
+                ...item,
+                name: this.intl.t(`Manual.JS.${item.name}`)
+            };
+        });
+
+        this.availableOrders = ORDERS.map(item => ({
+            value: item.value,
+            name: this.intl.t(`Manual.JS.${item.name}`)
+        }));
+        this.availableVisibilities = VISIBILITIES.map(item => ({
+            value: item.value,
+            name: this.intl.t(`Manual.JS.${item.name}`)
+        }));
         this.setProperties(DEFAULT_QUERY_PARAMS.posts);
 
         if (this.feature.get('emailAnalytics') && !this.availableOrders.findBy('name', 'Open rate')) {
             this.availableOrders.push({
-                name: 'Open rate',
+                name: this.intl.t('Manual.Posts.Open_rate'),
                 value: 'email.open_rate desc'
             });
         }
@@ -119,7 +133,7 @@ export default class PostsController extends Controller {
             .filter(tag => tag.get('id') !== null)
             .sort((tagA, tagB) => tagA.name.localeCompare(tagB.name, undefined, {ignorePunctuation: true}));
         let options = tags.toArray();
-        options.unshiftObject({name: 'All tags', slug: null});
+        options.unshiftObject({name: this.intl.t('Manual.Posts.All_tags'), slug: null});
 
         return options;
     }
@@ -142,7 +156,7 @@ export default class PostsController extends Controller {
         let authors = this._availableAuthors;
         let options = authors.toArray();
 
-        options.unshiftObject({name: 'All authors', slug: null});
+        options.unshiftObject({name: this.intl.t('Manual.Posts.All_authors'), slug: null});
 
         return options;
     }

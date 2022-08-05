@@ -290,10 +290,9 @@ export default class ReactEditorController extends Controller {
         // - empty cards may be left in draft posts due to autosave occuring
         //   whilst an empty card is present then the user closing the browser
         //   or refreshing the page
-        // TODO: not yet implemented in react editor
-        // if (this.post.isDraft) {
-        //     this._koenig.cleanup();
-        // }
+        if (this.post.isDraft) {
+            this._koenig.cleanup();
+        }
     }
 
     @action
@@ -532,11 +531,10 @@ export default class ReactEditorController extends Controller {
     *beforeSaveTask(options = {}) {
         // ensure we remove any blank cards when performing a full save
         if (!options.backgroundSave) {
-            // TODO: not yet implemented in react editor
-            // if (this._koenig) {
-            //     this._koenig.cleanup();
-            //     this.set('hasDirtyAttributes', true);
-            // }
+            if (this._koenig) {
+                this._koenig.cleanup();
+                this.set('hasDirtyAttributes', true);
+            }
         }
 
         // TODO: There's no need for (at least) most of these scratch values.
@@ -822,10 +820,9 @@ export default class ReactEditorController extends Controller {
         // - blank cards could be left around due to autosave triggering whilst
         //   a blank card is present then the user attempting to leave
         // - will mark the post as dirty so it gets saved when transitioning
-        // TODO: not yet implemented in react editor
-        // if (this._koenig && post.isDraft) {
-        //     this._koenig.cleanup();
-        // }
+        if (this._koenig && post.isDraft) {
+            this._koenig.cleanup();
+        }
 
         let hasDirtyAttributes = this.hasDirtyAttributes;
         let state = post.getProperties('isDeleted', 'isSaving', 'hasDirtyAttributes', 'isNew');
